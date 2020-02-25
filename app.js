@@ -19,7 +19,7 @@ var bodyParser = require("body-parser"),
 mongoose.connect(uri, {
     useUnifiedTopology: true,
     useNewUrlParser: true, useNewUrlParser: true
-});
+}, () => { console.log("we are connected")}).catch(err => console.log(err));
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
