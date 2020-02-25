@@ -1,0 +1,50 @@
+<%- include ('partials/header') %>
+
+
+<div class="container">
+    <div class="row ">
+        <div class="col-12 p-3 rounded-sm">
+            <h3>Episodes</h3>
+            <% blogs.reverse().forEach(function(blog){ %>
+                
+            <a href="/episodes/<%=blog._id %>"
+                class="text-reset text-decoration-none">
+                <div class="shadow-sm card mb-3 p-md-2 "
+                    style="max-width: 100%;">
+                    <div class="row no-gutters">
+                        <div
+                            class=" img-container col-5 col-lg-4 d-flex align-items-center">
+                            <img src="<%=blog.image%>" class="card-img"
+                                alt="...">
+                        </div>
+                        <div class="col-7 col-lg-8">
+                            <div class="card-body pb-1 py-md-1">
+                                <h5 class="card-title episode-title mb-0">
+                                    Episode <%=blog.episodeNum%></h5>
+                                <p class="card-text mb-0"><%=blog.title%></p>
+                                <p class=" card-text"><small
+                                        class="text-muted"><%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <%}); %>
+        </div>
+    </div>
+</div>
+
+<!-- <% blogs.reverse().forEach(function(blog){ %>
+    <div class="ui main text container segment">
+        <h2><%=blog.title%></h2>
+        <img src="<%=blog.image%>" style="width: 500px;">
+        <p><%=blog.created%></p>
+        <p><%=blog.body.substring(0,100)%>...</p>
+        <a href="/blogs/<%=blog._id %>">Read More</a>
+    </div>
+    
+
+<%}); %>
+
+<%- include ('partials/footer') %>
