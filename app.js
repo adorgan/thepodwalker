@@ -7,15 +7,15 @@ var bodyParser = require("body-parser"),
     app = express(),
     Blog = require("./models/blogpost");
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://andrew:Bonjovi1@cluster0-xt2mp.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useUnifiedTopology: true });
+// const MongoClient = require('mongodb').MongoClient;
+ const uri = "mongodb+srv://andrew:Bonjovi1@cluster0-xt2mp.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useUnifiedTopology: true });
 
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
-});
+// client.connect(err => {
+//     const collection = client.db("test").collection("devices");
+//     // perform actions on the collection object
+//     client.close();
+// });
 mongoose.connect(uri, {
     useUnifiedTopology: true,
     useNewUrlParser: true, useNewUrlParser: true
