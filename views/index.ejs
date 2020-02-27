@@ -23,8 +23,7 @@
                                 <h5 class="card-title episode-title mb-0">
                                     Episode <%=blog.episodeNum%></h5>
                                 <p class="card-text mb-0"><%=blog.title%></p>
-                                <p class=" card-text"><small
-                                        class="text-muted"><%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></small>
+                                <p class="card-date"><%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%>
                                 </p>
                             </div>
                         </div>
@@ -91,7 +90,7 @@
             </div>
             <h3>Gear</h3>
             <a href="#" class="text-reset text-decoration-none">
-                <div class="card p-3" style="width: 100%;">
+                <div class="card p-3 shadow-sm" style="width: 100%;">
                     <img src="gear.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Podwalker Gear List</h5>
@@ -103,6 +102,9 @@
                     </div>
                 </div>
             </a>
+
+            
+            
         </div>
     </div>
 </div>

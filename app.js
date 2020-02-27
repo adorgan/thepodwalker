@@ -2,6 +2,11 @@ var bodyParser = require("body-parser"),
     methodOverride = require("method-override"),
     expressSanitizer = require("express-sanitizer"),
     nodeMailer = require("nodemailer"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
+    passportLocalMongoose = require("passport-local-mongoose"),
+    User = require("./models/user"),
+    session = require("express-session");
     mongoose = require("mongoose"),
     express = require("express"),
     app = express(),
@@ -30,6 +35,17 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
+
+app.use(session({
+    secret: "Bear is the best and cutest dog in the world.",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // var emailSchema = new mongoose.Schema({
 //     firstName: String,
@@ -132,12 +148,12 @@ app.get("/episodes", function (req, res) {
 
 
 //NEW ROUTE
-app.get("/episodes/new", function (req, res) {
+app.get("/admin/episodes/new", isLoggedIn, function (req, res) {
     res.render("new");
 });
 
 //CREATE ROUTE
-app.post("/", function (req, res) {
+app.post("/admin/episodes/new", function (req, res) {
     //remove script tags
     req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.create(req.body.blog, function (err, newBlog) {
@@ -145,7 +161,7 @@ app.post("/", function (req, res) {
             res.render("new");
         }
         else {
-            res.redirect("/");
+            res.redirect("/admin/episodes");
         }
     })
 });
@@ -164,10 +180,10 @@ app.get("/episodes/:id", function (req, res) {
 });
 
 //EDIT ROUTE
-app.get("/episodes/:id/edit", function (req, res) {
+app.get("/admin/episodes/:id/edit", isLoggedIn, function (req, res) {
     Blog.findById(req.params.id, function (err, foundBlog) {
         if (err) {
-            res.redirect("/");
+            res.redirect("/admin/episodes");
         }
         else {
             res.render("edit", { blog: foundBlog });
@@ -176,7 +192,7 @@ app.get("/episodes/:id/edit", function (req, res) {
 });
 
 //UPDATE ROUTE
-app.put("/blogs/:id", function (req, res) {
+app.put("/admin/episodes/:id", isLoggedIn, function (req, res) {
     //remove script tags
     req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function (err, updatedBlog) {
@@ -184,22 +200,54 @@ app.put("/blogs/:id", function (req, res) {
             res.redirect("/");
         }
         else {
-            res.redirect("/episodes/" + req.params.id);
+            res.redirect("/admin/episodes/");
         }
     })
 });
 
 //DELETE ROUTE
-app.delete("/episodes/:id", function (req, res) {
+app.delete("/admin/episodes/:id", isLoggedIn, function (req, res) {
     Blog.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
-            res.redirect("/");
+            res.redirect("/admin/episodes/");
         }
         else {
-            res.redirect("/");
+            res.redirect("/admin/episodes/");
+        }
+    });
+});
+
+
+//ADMIN LOGIN
+app.get("/admin/login", function(req,res){
+    res.render("adminlogin");
+});
+
+app.post("/admin/login", passport.authenticate("local", {
+    successRedirect: "/admin/episodes",
+    failureRedirect: "/admin/login"
+
+    }),function(req,res){
+    
+});
+
+//ADMIN EPISODES
+app.get("/admin/episodes", isLoggedIn, function(req, res){
+    Blog.find({}, function (err, blogs) {
+        if (err) {
+            console.log("Error");
+        } else {
+            res.render("adminepisodes", { blogs: blogs });
         }
     })
 });
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/admin/login");
+}
 
 const PORT = process.env.PORT || 3000;
 
