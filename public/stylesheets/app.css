@@ -34,19 +34,24 @@ body {
     font-size: 22px;
 }
 
-.carousel-inner{
-    height: 200px;
-}
+
+
+
+
 .card-text{
     font-weight: 700;
     font-size: 20px;
+    
     
 }
 .card{
     border-radius: 0;
     max-width: 100%;
-    display: block;
-    
+    display: block;  
+}
+
+.card-img-top{
+    border-radius: 0;
 }
 
 .card-img{
@@ -145,6 +150,10 @@ body {
   .card ul{
       padding-left: 16px;
       margin-bottom: 0;
+  }
+
+  .subscribe-status{
+      color: green;
   }
 
 @media only screen and (max-width: 600px) {

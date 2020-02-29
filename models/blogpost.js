@@ -6,7 +6,11 @@ var blogSchema = new mongoose.Schema({
     body: String,
     playlist: String,
     episodeNum: String,
-    created: {type: Date, default: Date.now}
+    created: {type: Date, default: Date.now},
+    walkImage: String,
+    walkDistance: String,
+    walkSteps: String,
+    walkTime: String
 });
 
 module.exports = mongoose.model("Blog", blogSchema);

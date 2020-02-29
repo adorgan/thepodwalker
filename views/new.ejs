@@ -6,7 +6,7 @@
             <h2>Add Blog Post</h2>
         </div>
         <div class="col-12">
-        <form action="/admin/episodes/new" method="POST">
+        <form autocomplete=off action="/admin/episodes/new" method="POST">
             <div class="form-group">
                 <label>Episode Number</label>
                 <input type="text" class="form-control" name="blog[episodeNum]">
@@ -26,6 +26,23 @@
             <div class="form-group">
                 <label>Post Body</label>
                 <textarea name="blog[body]" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Map Image URL</label>
+                <input type="text" class="form-control" name="blog[walkImage]">
+            </div>
+            <div class="form-group">
+                <label>Walk Distance</label>
+                <input type="text" class="form-control" name="blog[walkDistance]">
+            </div>
+            <div class="form-group">
+                <label>Walk Steps</label>
+                <input type="text" class="form-control" name="blog[walkSteps]">
+            </div>
+            <div class="form-group">
+                <label>Walk Time</label>
+                <input type="text" class="form-control" name="blog[walkTime]">
             </div>
             
             <input class="ui violet big basic button" type="submit">
