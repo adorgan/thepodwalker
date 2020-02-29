@@ -133,7 +133,13 @@ app.get("/", function (req, res) {
 });
 
 app.get("/about", function (req, res) {
-    res.render("about");
+    Blog.find({}, function (err, blogs) {
+        if (err) {
+            console.log("Error");
+        } else {
+            res.render("about", { blogs: blogs });
+        }
+    });
 });
 
 app.get("/subscribe", function (req, res) {
@@ -163,7 +169,7 @@ app.post("/subscribe", function (req, res) {
                 }
             });
             var msgSuccess = "Thank you for subscribing!";
-            res.render("snippet", {msg: msgSuccess});
+            res.render("partials/subscribe_success", {msg: msgSuccess});
         }
     })
 });

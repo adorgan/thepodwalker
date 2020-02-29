@@ -6,7 +6,8 @@
         <div class="col-lg-8  col-sm-12 p-3 rounded-sm">
             <h3>Latest Episodes</h3>
 
-            <% blogs.reverse().slice(0,3).forEach(function(blog){ %>
+            <% blogs.reverse().forEach(function(blog){ %>
+                
 
             <a href="/episodes/<%=blog._id %>"
                 class="text-reset text-decoration-none">
@@ -37,17 +38,19 @@
 
 
         <div class="col-lg-4 col-lg-4 col-sm-12 p-3">
-            <h3>Featured Walks</h3>
+            <h3>Recent Walks</h3>
 
 
             <div class="card mb-3 shadow-sm ">
                 <div class="row no-gutters p-0 ">
+                    
                     <div id="carouselExampleControls" class="carousel slide"
                         data-ride="carousel">
+                        
                         <div class="carousel-inner ">
                             <div class="carousel-item active">
                                 <div class="p-2" style="width: 100%;">
-                                
+                                    <h5>Episode <%=blogs[0].episodeNum%></h5>
                                     <img src="<%=blogs[0].walkImage%>" class="card-img-top" alt="...">
                                     <div class="card-body card-text p-2">
                                         
@@ -60,22 +63,25 @@
                                     </div>
                                 </div>
                             </div>
+                            <% blogs.slice(1, 3).forEach(function(blog){ %>
                             <div class="carousel-item">
                                 <div class=" p-2 " style="width: 100%;">
-                                    <img src="<%=blogs[0].walkImage%>" class="card-img-top" alt="...">
+                                    <h5>Episode <%=blog.episodeNum%></h5>
+                                    <img src="<%=blogs[1].walkImage%>" class="card-img-top" alt="...">
                                     <div class="card-body card-text p-2">
                                         
                                         <ul>
-                                            <li>Distance: <%=blogs[0].walkDistance%></li>
-                                            <li>Steps: <%=blogs[0].walkSteps%></li>
-                                            <li>Time: <%=blogs[0].walkTime%></li>
+                                            <li>Distance: <%=blog.walkDistance%></li>
+                                            <li>Steps: <%=blog.walkSteps%></li>
+                                            <li>Time: <%=blog.walkTime%></li>
                                         </ul>
                                         
                                     </div>
                                 </div>
                             </div>
+                            <%}); %>
                             </div>
-                            
+                         
 
                         </div>
                         <a class="carousel-control-prev"
@@ -96,7 +102,7 @@
                     
                 </div>
                 <h3>Gear</h3>
-            <a href="#" class="text-reset text-decoration-none">
+            <!-- <a href="#" class="text-reset text-decoration-none"> -->
                 <div class="card p-2 p-md-3 shadow-sm" style="width: 100%;">
                     <img src="images/gear.jpg" class="card-img-top" alt="...">
                     <div class="card-body p-0 pt-2">
@@ -110,7 +116,7 @@
                         </ul>
                     </div>
                 </div>
-            </a>
+            <!-- </a> -->
             </div>
             
 

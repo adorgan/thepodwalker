@@ -1,10 +1,53 @@
-<%- include ('partials/header') %>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Pod Walker</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cd776babcb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+    </head>
+    <body>
+        <nav id="myNav" class="fixed-top navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/"><i class="fas fa-hiking"></i>The Pod Walker</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/episodes">Episodes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/playlists">Playlists</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/subscribe">Subscribe</a>
+                        </li>
+                    </ul>
+    
+                </div>
+            </div>
+        </nav>
 
 <div class="container">
     <h3 class="pt-3">Playlists</h3>
     <div class="row" style="display: flex; flex-wrap: wrap;">
 
-        <% blogs.forEach(function(blog){ %>
+        <% blogs.slice(1, blogs.length).forEach(function(blog){ %>
         <div class="col-lg-4 col-md-6 rounded-sm">
             <div>
                 <%-blog.playlist%>

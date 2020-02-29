@@ -1,6 +1,7 @@
 body {
     font-family: 'Oxygen', sans-serif;
     padding-top: 60px;
+    padding-bottom: 30px;
     background-color: rgb(249, 249, 250)
 }
 
@@ -152,6 +153,10 @@ body {
       margin-bottom: 0;
   }
 
+  .subscribe-container{
+      width: 75%;
+  }
+
   .subscribe-status{
       color: green;
   }
@@ -174,7 +179,9 @@ body {
         font-weight: 700;
         font-size: 16px;
     }
-    .carousel-inner{
-        height: 300px;
+
+    .subscribe-container{
+        width: 100%;
     }
+    
   }
