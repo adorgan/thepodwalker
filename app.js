@@ -6,12 +6,12 @@ var bodyParser = require("body-parser"),
     LocalStrategy = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     User = require("./models/user"),
-    session = require("express-session");
+    session = require("express-session"),
     mongoose = require("mongoose"),
     express = require("express"),
     app = express(),
-    Blog = require("./models/blogpost");
-    Email = require("./models/email")
+    Blog = require("./models/blogpost"),
+    Email = require("./models/email");
 
 // const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://andrew:Bonjovi1@cluster0-xt2mp.mongodb.net/test?retryWrites=true&w=majority";
@@ -221,7 +221,7 @@ app.post("/admin/episodes/new", function (req, res) {
                         to: email.email,
                         subject: 'New Pod Walker Episode',
                         // 
-                        html: "<p style='color: black;'>Hey " + email.firstName + ",</p><p>Check out the newest episode of the Pod Walker below.</p><br><div style='width=400px; border=1px solid black'><a href='https://podwalker.herokuapp.com/episodes/" + newBlog._id + "' style='text-decoration: none; color: black;'><h3>Episode " + newBlog.episodeNum + "</h3><h4>" + newBlog.title + "</h4><br><img style='width: 350px; margin-top: 0px; padding-top: 0px;' src=" + newBlog.image + "></a></div>"
+                        html: "<div style='color:black;'>Hey "+email.firstName+",</div><div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br><div><a href='https://podwalker.herokuapp.com/episodes/"+newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'><div>Episode "+newBlog.episodeNum+"</div><div><strong>" + newBlog.title + "</strong></div><img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image+"></a></div><br><br><br><div><a style='text-decoration:none;color:blue;' href='www.podwalker.com/unsubscribe'>Unsubscribe</a></div>"
                     };
                     transporter.sendMail(mailOptions, function (error, info) {
                         if (error) {
