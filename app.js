@@ -199,8 +199,8 @@ app.get("/episodes", function (req, res) {
 
 });
 
-app.get("/.well-known/acme-challenge/FPVtfyCjk8Hy1uJs1q_X1Q_gHV4KaoZv2v8D_uu-DvE", function (req, res) {
-    res.send("FPVtfyCjk8Hy1uJs1q_X1Q_gHV4KaoZv2v8D_uu-DvE.Wwy0GPeoPczoZOkzxI1f_DBgIq-uPuXn1aVYeWF9uiE");
+app.get("/.well-known/acme-challenge/4ZMIlSSI1cvU27yB_hl9RkcHev8r179FFIz5uoZFR8s", function (req, res) {
+    res.send("4ZMIlSSI1cvU27yB_hl9RkcHev8r179FFIz5uoZFR8s.Wwy0GPeoPczoZOkzxI1f_DBgIq-uPuXn1aVYeWF9uiE");
 });
 
 //NEW ROUTE
