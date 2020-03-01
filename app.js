@@ -162,7 +162,7 @@ app.post("/subscribe", function (req, res) {
                 from: 'adorgan@gmail.com',
                 to: newEmail.email,
                 subject: 'Thanks for signing up for the Pod Walker',
-                text: 'Hey ' + newEmail.firstName + ', that was easy! You are now signed up to receive notifications when new Pod Walker episodes are published.'
+                html: "<div style='color:black;'>Hey "+ newEmail.firstName+",</div><div style='color: black'>That was easy! You are now signed up to receive email notifications when new Pod Walker episodes are published.</div><br><br><br><div><a style='text-decoration:none;color:blue;' href='www.podwalker.com/unsubscribe'>Unsubscribe</a></div>"
             };
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
@@ -220,7 +220,7 @@ app.post("/admin/episodes/new", function (req, res) {
                         to: email.email,
                         subject: 'New Pod Walker Episode',
                         // 
-                        html: "<div style='color:black;'>Hey "+email.firstName+",</div><div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br><div><a href='https://podwalker.herokuapp.com/episodes/"+newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'><div>Episode "+newBlog.episodeNum+"</div><div><strong>" + newBlog.title + "</strong></div><img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image+"></a></div><br><br><br><div><a style='text-decoration:none;color:blue;' href='www.podwalker.com/unsubscribe'>Unsubscribe</a></div>"
+                        html: "<div style='color:black;'>Hey "+email.firstName+",</div><div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br><div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'><div>Episode "+newBlog.episodeNum+"</div><div><strong>" + newBlog.title + "</strong></div><img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image+"></a></div><br><br><br><div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
                     };
                     transporter.sendMail(mailOptions, function (error, info) {
                         if (error) {
@@ -276,8 +276,81 @@ app.put("/admin/episodes/:id", isLoggedIn, function (req, res) {
     })
 });
 
+app.get("/unsubscribe", function (req, res) {
+    res.render("unsubscribe");
+});
+
+app.delete("/unsubscribe", function(req,res){
+    var em = Email.find({"email": req.body.email.email}, function(err, email){
+        if(err){
+            console.log(err);
+        }
+        else{
+            email.forEach(function(em){
+                Email.findByIdAndRemove(em._id, function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log("deleted email");
+                        // var msgSuccess = "You will not receive any more email notifications.";
+                        // res.render("partials/subscribe_success", { msg: msgSuccess });
+                    }
+                });
+            })
+            // console.log(email[0]._id);
+            // Email.findByIdAndRemove(email[0]._id, function (err) {
+            //             if (err) {
+            //                 console.log(err);
+            //             }
+            //             else {
+            //                 console.log("deleted email");
+            //                 // var msgSuccess = "You will not receive any more email notifications.";
+            //                 // res.render("partials/subscribe_success", { msg: msgSuccess });
+            //             }
+            //         });
+
+            // email.forEach(function(mail){
+            //     Email.findByIdAndRemove(mail._id, function (err) {
+            //         if (err) {
+            //             console.log(err);
+            //         }
+            //         else {
+            //             console.log("deleted email");
+            //             // var msgSuccess = "You will not receive any more email notifications.";
+            //             // res.render("partials/subscribe_success", { msg: msgSuccess });
+            //         }
+            //     });
+            // })
+            // Email.findByIdAndRemove(email._id, function (err) {
+            //     if (err) {
+            //         console.log(err);
+            //     }
+            //     else {
+            //         console.log("deleted email");
+                    var msgSuccess = "You will not receive any more email notifications.";
+                    res.render("partials/subscribe_success", { msg: msgSuccess });
+            //     }
+            // });
+        }
+    });
+    
+    // Email.findby(req.body.email.email, function(err){
+        
+    //     console.log(req.params);
+    //     if (err) {
+    //         res.redirect("/");
+    //     }
+    //     else {
+    //         var msgSuccess = "You will no longer receive email notifications.";
+    //         res.render("partials/subscribe_success", { msg: msgSuccess });
+    //     }
+    // })
+})
+
 //DELETE ROUTE
 app.delete("/admin/episodes/:id", isLoggedIn, function (req, res) {
+    
     Blog.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.redirect("/admin/episodes/");

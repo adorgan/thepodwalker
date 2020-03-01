@@ -70,8 +70,10 @@ a:hover{
 }
 .card-body {
     padding-top: 10px;
-    
-    
+}
+
+.image_citation{
+    font-size: 12px;
 }
 
 .episode-number{
