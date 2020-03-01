@@ -143,8 +143,11 @@ app.get("/about", function (req, res) {
 });
 
 app.get("/subscribe", function (req, res) {
-
     res.render("subscribe", { msg: "" });
+});
+
+app.get("/privacy", function (req, res) {
+    res.render("privacy");
 });
 
 app.post("/subscribe", function (req, res) {

@@ -4,7 +4,7 @@
     <title>The Pod Walker</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <link rel="icon" href="/images/favicon.png" type="image/png">
     <meta property="og:url"           content="https://podwalker.herokuapp.com/episodes/<%=blog._id%>" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="The Pod Walker: Episode <%=blog.episodeNum%>" />
@@ -55,7 +55,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 p-3">
-            <h5><span class="episode-number">Episode <%=blog.episodeNum%></span></h5>
+            
+            <h3><span class="episode-number">Episode <%=blog.episodeNum%></span></h3>
             <h2 class="my-3"><%=blog.title%></h2>
             <h6>By <a href="/about">Tim Dorgan</a> | <%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></h6>
             <div  data-href="https://podwalker.herokuapp.com/episodes/<%=blog._id%>" ><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpodwalker.herokuapp.com%2Fepisodes%2F<%=blog._id%>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i></a></div>
@@ -64,6 +65,7 @@
         </div>
         <div class="col-lg-4 p-3">
             <div class="mb-3 ">
+                <h3>Today's Playlist</h3>
                 <%-blog.playlist%>
             </div>
 
@@ -86,5 +88,5 @@
         
     </div>
 </div>
-
+</div>
 <%- include ('partials/footer') %>

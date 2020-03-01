@@ -6,7 +6,7 @@
     <title>The Pod Walker</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="/images/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -46,15 +46,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 p-3">
-                    <h5><span class="episode-number">Episode <%=blogs[0].episodeNum%></span></h5>
+                    <h3><span class="episode-number">Episode <%=blogs[0].episodeNum%></span></h3>
                     <h2 class="my-3"><%=blogs[0].title%></h2>
                     <h6>By <a href="/about">Tim Dorgan</a> | <%=(blogs[0].created.getMonth()+1) + '/' + blogs[0].created.getDate() + '/' + blogs[0].created.getFullYear()%></h6>
-                    
-                    <img src="<%=blogs[0].image%>" class="card-img py-3" alt="...">
+                    <div  data-href="https://podwalker.herokuapp.com/episodes/<%=blogs[0]%>" ><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpodwalker.herokuapp.com%2Fepisodes%2F<%=blogs[0]%>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i></a></div>
+                    <img src="<%=blogs[0].image%>" class="card-img pb-3 pt-2" alt="...">
                     <p class="mb-0"><%-blogs[0].body%></p>
                 </div>
                 <div class="col-lg-4 p-3">
                     <div class="mb-3 ">
+                        <h3>Today's Playlist</h3>
                         <%-blogs[0].playlist%>
                     </div>
         
@@ -76,6 +77,7 @@
                 </div>
                 
             </div>
+        </div>
         </div>
         
         <%- include ('partials/footer') %>
