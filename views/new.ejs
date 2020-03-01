@@ -1,57 +1,59 @@
 <%- include ('partials/header') %>
 <div class="container d-flex justify-content-center">
-    
     <div class="row">
         <div class="col-12 d-flex justify-content-center pt-3">
             <h2>Add Blog Post</h2>
         </div>
         <div class="col-12">
-        <form autocomplete=off action="/admin/episodes/new" method="POST">
-            <div class="form-group">
-                <label>Episode Number</label>
-                <input type="text" class="form-control" name="blog[episodeNum]">
-              </div>
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" class="form-control" name="blog[title]">
-            </div>
-            <div class="form-group">
-                <label>Image URL</label>
-                <input type="text" class="form-control" name="blog[image]">
-            </div>
-            <div class="form-group">
-                <label>Playlist URL</label>
-                <input type="text" class="form-control" name="blog[playlist]">
-            </div>
-            <div class="form-group">
-                <label>Post Body</label>
-                <textarea name="blog[body]" class="form-control" cols="30" rows="10"></textarea>
-            </div>
+            <form autocomplete=off action="/admin/episodes/new" method="POST">
+                <div class="form-group">
+                    <label>Episode Number</label>
+                    <input type="text" class="form-control"
+                        name="blog[episodeNum]">
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="blog[title]">
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="text" class="form-control" name="blog[image]">
+                </div>
+                <div class="form-group">
+                    <label>Playlist URL</label>
+                    <input type="text" class="form-control"
+                        name="blog[playlist]">
+                </div>
+                <div class="form-group">
+                    <label>Post Body</label>
+                    <textarea name="blog[body]" class="form-control" cols="30"
+                        rows="10"></textarea>
+                </div>
 
-            <div class="form-group">
-                <label>Map Image URL</label>
-                <input type="text" class="form-control" name="blog[walkImage]">
-            </div>
-            <div class="form-group">
-                <label>Walk Distance</label>
-                <input type="text" class="form-control" name="blog[walkDistance]">
-            </div>
-            <div class="form-group">
-                <label>Walk Steps</label>
-                <input type="text" class="form-control" name="blog[walkSteps]">
-            </div>
-            <div class="form-group">
-                <label>Walk Time</label>
-                <input type="text" class="form-control" name="blog[walkTime]">
-            </div>
-            
-            <input class="ui violet big basic button" type="submit">
-        </form>
-    </div>
+                <div class="form-group">
+                    <label>Map Image URL</label>
+                    <input type="text" class="form-control"
+                        name="blog[walkImage]">
+                </div>
+                <div class="form-group">
+                    <label>Walk Distance</label>
+                    <input type="text" class="form-control"
+                        name="blog[walkDistance]">
+                </div>
+                <div class="form-group">
+                    <label>Walk Steps</label>
+                    <input type="text" class="form-control"
+                        name="blog[walkSteps]">
+                </div>
+                <div class="form-group">
+                    <label>Walk Time</label>
+                    <input type="text" class="form-control"
+                        name="blog[walkTime]">
+                </div>
+                <input class="ui violet big basic button" type="submit">
+            </form>
+        </div>
     </div>
     <br>
-    
-
 </div>
-
 <%- include ('partials/footer') %>

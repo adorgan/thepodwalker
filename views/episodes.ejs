@@ -4,90 +4,84 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>The Pod Walker</title>
-    <meta name="description" content="">
+    <meta name="description" content="List of Episodes">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/images/favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/cd776babcb.js" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cd776babcb.js"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
-    </head>
-    <body>
-        <nav id="myNav" class="fixed-top navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="/"><i class="fas fa-hiking"></i>The Pod Walker</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link active"  href="/episodes">Episodes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/playlists">Playlists</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
-                        </li>
-    
-                        <li class="nav-item">
-                            <a class="nav-link" href="/subscribe">Subscribe</a>
-                        </li>
-                    </ul>
-    
-                </div>
+</head>
+
+<body>
+    <nav id="myNav" class="fixed-top navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/"><i class="fas fa-hiking"></i>The
+                Pod Walker</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end"
+                id="navbarSupportedContent">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/episodes">Episodes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/playlists">Playlists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/subscribe">Subscribe</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-
-<div class="container">
-    <div class="row ">
-        <div class="col-12 p-3 rounded-sm">
-            <h3>Episodes</h3>
-            <% blogs.reverse().forEach(function(blog){ %>
-                
-            <a href="/episodes/<%=blog._id %>"
-                class="text-reset text-decoration-none">
-                <div class="shadow-sm card mb-3 p-md-2 "
-                    style="max-width: 100%;">
-                    <div class="row no-gutters">
-                        <div
-                            class=" img-container col-5 col-lg-4 d-flex align-items-center">
-                            <img src="<%=blog.image%>" class="card-img"
-                                alt="...">
-                        </div>
-                        <div class="col-7 col-lg-8">
-                            <div class="card-body pb-1 py-md-1">
-                                <h5 class="card-title episode-title mb-0">
-                                    Episode <%=blog.episodeNum%></h5>
-                                <p class="card-text mb-0"><%=blog.title%></p>
-                                <p class=" card-text"><small
-                                        class="text-muted"><%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></small>
-                                </p>
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 p-3 rounded-sm">
+                <h3>Episodes</h3>
+                <% blogs.reverse().forEach(function(blog){ %>
+                <a href="/episodes/<%=blog._id %>"
+                    class="text-reset text-decoration-none">
+                    <div class="shadow-sm card mb-3 p-md-2 "
+                        style="max-width: 100%;">
+                        <div class="row no-gutters">
+                            <div
+                                class=" img-container col-5 col-lg-4 d-flex align-items-center">
+                                <img src="<%=blog.image%>" class="card-img"
+                                    alt="...">
+                            </div>
+                            <div class="col-7 col-lg-8">
+                                <div class="card-body pb-1 py-md-1">
+                                    <h5 class="card-title episode-title mb-0">
+                                        Episode <%=blog.episodeNum%></h5>
+                                    <p class="card-text mb-0"><%=blog.title%>
+                                    </p>
+                                    <p class=" card-text"><small
+                                            class="text-muted"><%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></small>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <%}); %>
+                </a>
+                <%}); %>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- <% blogs.reverse().forEach(function(blog){ %>
-    <div class="ui main text container segment">
-        <h2><%=blog.title%></h2>
-        <img src="<%=blog.image%>" style="width: 500px;">
-        <p><%=blog.created%></p>
-        <p><%=blog.body.substring(0,100)%>...</p>
-        <a href="/blogs/<%=blog._id %>">Read More</a>
-    </div>
-    
-
-<%}); %>
-<!--  -->
 <%- include ('partials/footer') %>
