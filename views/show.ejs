@@ -59,7 +59,15 @@
             <h3><span class="episode-number">Episode <%=blog.episodeNum%></span></h3>
             <h2 class="my-3"><%=blog.title%></h2>
             <h6>By <a href="/about">Tim Dorgan</a> | <%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></h6>
-            <div  data-href="https://podwalker.herokuapp.com/episodes/<%=blog._id%>" ><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpodwalker.herokuapp.com%2Fepisodes%2F<%=blog._id%>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i></a></div>
+            <div>
+                <div>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpodwalker.herokuapp.com%2Fepisodes%2F<%=blog._id%>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i></a>
+                    <i id="shareBtn" class="fa fa-share"></i>
+                    
+                </div>
+            </div>
+            <!-- <div  data-href="https://podwalker.herokuapp.com/episodes/<%=blog._id%>" ><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpodwalker.herokuapp.com%2Fepisodes%2F<%=blog._id%>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i></a></div>
+             -->
             <img src="<%=blog.image%>" class="card-img pb-3 pt-2" alt="...">
             <p class="mb-0"><%-blog.body%></p>
         </div>
@@ -89,4 +97,33 @@
     </div>
 </div>
 </div>
-<%- include ('partials/footer') %>
+
+<div id="footer" class="d-flex align-items-center">
+    <div class="container ">
+        <div  class="row ">
+            <div  class="col-6">
+                <p class="footer-text">Made with love in Deerfield, IL</p>
+            </div>
+            <div  class="footer-text col-6 d-flex justify-content-end">
+                <a href="/privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script
+src="https://code.jquery.com/jquery-3.4.1.js"
+integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+crossorigin="anonymous"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+crossorigin="anonymous"></script>
+<script
+src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+crossorigin="anonymous"></script>
+<script src="/javascripts/share.js"></script>
+</body>
+</html>

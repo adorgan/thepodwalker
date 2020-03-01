@@ -199,9 +199,6 @@ app.get("/episodes", function (req, res) {
 
 });
 
-app.get("/.well-known/acme-challenge/ir9T_rbRDF8xphFoEioy5zJCxm479HmRQdCQJaleswk", function (req, res) {
-    res.send("ir9T_rbRDF8xphFoEioy5zJCxm479HmRQdCQJaleswk.Wwy0GPeoPczoZOkzxI1f_DBgIq-uPuXn1aVYeWF9uiE");
-});
 
 //NEW ROUTE
 app.get("/admin/episodes/new", isLoggedIn, function (req, res) {
