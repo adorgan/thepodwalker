@@ -7,11 +7,11 @@ var bodyParser = require("body-parser"),
     passportLocalMongoose = require("passport-local-mongoose"),
     User = require("./models/user"),
     session = require("express-session");
-mongoose = require("mongoose"),
+    mongoose = require("mongoose"),
     express = require("express"),
     app = express(),
     Blog = require("./models/blogpost");
-Email = require("./models/email")
+    Email = require("./models/email")
 
 // const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://andrew:Bonjovi1@cluster0-xt2mp.mongodb.net/test?retryWrites=true&w=majority";
@@ -143,8 +143,8 @@ app.get("/about", function (req, res) {
 });
 
 app.get("/subscribe", function (req, res) {
-    
-    res.render("subscribe", {msg: "" });
+
+    res.render("subscribe", { msg: "" });
 });
 
 app.post("/subscribe", function (req, res) {
@@ -159,7 +159,7 @@ app.post("/subscribe", function (req, res) {
                 from: 'adorgan@gmail.com',
                 to: newEmail.email,
                 subject: 'Thanks for signing up for the Pod Walker',
-                text: 'Hey ' + newEmail.firstName + ', that was easy! You are now signed up to receive notifications when new Pod Walker episodes are published. :)'
+                text: 'Hey ' + newEmail.firstName + ', that was easy! You are now signed up to receive notifications when new Pod Walker episodes are published.'
             };
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
@@ -169,7 +169,7 @@ app.post("/subscribe", function (req, res) {
                 }
             });
             var msgSuccess = "Thank you for subscribing!";
-            res.render("partials/subscribe_success", {msg: msgSuccess});
+            res.render("partials/subscribe_success", { msg: msgSuccess });
         }
     })
 });
@@ -218,7 +218,7 @@ app.post("/admin/episodes/new", function (req, res) {
                         to: email.email,
                         subject: 'New Pod Walker Episode',
                         // 
-                        html: "<p>Hey " + email.firstName + ",</p><p>Check out the newest episode of the Pod Walker below.</p><br><div style='width=400px; border=1px solid black'><a href='https://podwalker.herokuapp.com/" + newBlog._id + "' style='text-decoration: none'><h3>Episode " + newBlog.episodeNum + "</h3><h4>" + newBlog.title + "</h4><br><img style='width: 350px;' src=" + newBlog.image + "></a></div>"
+                        html: "<p style='color: black;'>Hey " + email.firstName + ",</p><p>Check out the newest episode of the Pod Walker below.</p><br><div style='width=400px; border=1px solid black'><a href='https://podwalker.herokuapp.com/episodes/" + newBlog._id + "' style='text-decoration: none; color: black;'><h3>Episode " + newBlog.episodeNum + "</h3><h4>" + newBlog.title + "</h4><br><img style='width: 350px; margin-top: 0px; padding-top: 0px;' src=" + newBlog.image + "></a></div>"
                     };
                     transporter.sendMail(mailOptions, function (error, info) {
                         if (error) {
