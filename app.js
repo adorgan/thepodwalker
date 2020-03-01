@@ -48,77 +48,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// var emailSchema = new mongoose.Schema({
-//     firstName: String,
-//     lastName: String,
-//     email: String,
-
-// });
-
-// var Email = mongoose.model("Email", emailSchema);
-
-// Email.create({
-//     firstName: "Tim",
-//     lastName: "Dragon",
-//     email: "adorgan@gmail.com"
-// });
-
-// Email.create({
-//     firstName: "Wendy",
-//     lastName: "Zhang",
-//     email: "dorgana@oregonstate.edu"
-// });
 
 var transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'adorgandorgan@gmail.com',
-        pass: 'Bonjovi1'
+        user: 'thepodwalker@gmail.com',
+        pass: 'illini!(52'
     }
 });
-
-//   Email.find({}).forEach(function(email){
-//             var mailOptions = {
-//                 from: 'adorgan@gmail.com',
-//                 to: email.email,
-//                 subject: 'Sending Email using Node.js',
-//                 text: 'Hello ' + email.firstName + ', that was easy!'
-//               };
-//               transporter.sendMail(mailOptions, function(error, info){
-//                 if (error) {
-//                   console.log(error);
-//                 } else {
-//                   console.log('Email sent: ' + info.response);
-//                 }
-//               });
-//         });
-
-
-//   var mailOptions = {
-//     from: 'adorgan@gmail.com',
-//     to: Email.find,
-//     subject: 'Sending Email using Node.js',
-//     text: 'That was easy!'
-//   };
-
-//   transporter.sendMail(mailOptions, function(error, info){
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log('Email sent: ' + info.response);
-//     }
-//   });
-
-
-//Routes
-
-// app.get("/", function (req, res) {
-//     res.redirect("/blogs");
-// });
-
-
-
-
 
 
 //INDEX
@@ -159,10 +96,10 @@ app.post("/subscribe", function (req, res) {
         }
         else {
             var mailOptions = {
-                from: 'adorgan@gmail.com',
+                from: 'thepodwalker@gmail.com',
                 to: newEmail.email,
                 subject: 'Thanks for signing up for the Pod Walker',
-                html: "<div style='color:black;'>Hey "+ newEmail.firstName+",</div><div style='color: black'>That was easy! You are now signed up to receive email notifications when new Pod Walker episodes are published.</div><br><br><br><div><a style='text-decoration:none;color:blue;' href='www.podwalker.com/unsubscribe'>Unsubscribe</a></div>"
+                html: "<div style='color:black;'>Hey "+ newEmail.firstName+",</div><div style='color: black'>That was easy! You are now signed up to receive email notifications when new Pod Walker episodes are published.</div><br><br><br><div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
             };
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {

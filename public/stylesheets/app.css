@@ -149,7 +149,7 @@ a:hover{
   #footer{
       height: 60px;
       background: #0E3386;
-      margin-top: 200px;
+      margin-top: 100px;
   }
 
   .footer-text{
@@ -176,6 +176,12 @@ a:hover{
 
   .btn-primary:hover{
     background-color: rgb(53, 81, 148);
+  }
+
+  .btn-primary:active, .btn-primary:focus {
+    color: #ffffff !important;
+    background-color: #0E3386 !important;
+    border-color: #0E3386 !important;
   }
 
 @media only screen and (max-width: 600px) {

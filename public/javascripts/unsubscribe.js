@@ -2,7 +2,7 @@
 $("#unsubscribe_button").on("click", function(event){
 
     if($("#unsubscribe_email").val() === ""){
-        var div = document.getElementById("unsubscribe_success");
+        var div = document.getElementById("subscribe_success");
         
             div.innerHTML = "*Please enter a valid email address.";
             div.style.color = "red";
@@ -27,6 +27,7 @@ $("#unsubscribe_button").on("click", function(event){
             //import ejs snippet
             var div = document.getElementById("subscribe_success");
             div.innerHTML = result;
+            div.style.color = "green";
         })
     });
 })
