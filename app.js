@@ -199,7 +199,7 @@ app.get("/episodes", function (req, res) {
 
 });
 
-app.get("/.well-known/acme-challenge/FPVtfyCjk8Hy1uJs1q_X1Q_gHV4KaoZv2v8D_uu-DvE", isLoggedIn, function (req, res) {
+app.get("/.well-known/acme-challenge/FPVtfyCjk8Hy1uJs1q_X1Q_gHV4KaoZv2v8D_uu-DvE", function (req, res) {
     res.send("FPVtfyCjk8Hy1uJs1q_X1Q_gHV4KaoZv2v8D_uu-DvE.Wwy0GPeoPczoZOkzxI1f_DBgIq-uPuXn1aVYeWF9uiE");
 });
 
