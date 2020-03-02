@@ -30,6 +30,7 @@ $("#subscribe_button").on("click", function(event){
             //import ejs snippet
             var div = document.getElementById("subscribe_success");
             div.innerHTML = result;
+            div.style.color = "green";
         })
     });
 })

@@ -15,7 +15,7 @@ router.post("/admin/login", passport.authenticate("local", {
     successRedirect: "/admin/episodes",
     failureRedirect: "/admin/login"
 
-}), function (req, res) {
+    }), function (req, res) {
 
 });
 

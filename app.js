@@ -44,6 +44,6 @@ app.use(subscribeRoutes);
 app.use(indexRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     console.log("Server is running");
 });
