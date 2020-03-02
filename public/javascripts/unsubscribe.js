@@ -1,9 +1,8 @@
-//form to subscribe for email updates
+//form to unsubscribe for email updates
 $("#unsubscribe_button").on("click", function(event){
 
     if($("#unsubscribe_email").val() === ""){
         var div = document.getElementById("subscribe_success");
-        
             div.innerHTML = "*Please enter a valid email address.";
             div.style.color = "red";
         return false;

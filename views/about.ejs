@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<!-- nav bar -->
     <nav id="myNav" class="fixed-top navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="/"><i class="fas fa-hiking"></i>The
@@ -51,7 +52,7 @@
             </div>
         </div>
     </nav>
-
+<!-- Main article content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 p-3">
@@ -64,7 +65,7 @@
                 <div>
                     <div>
                         <a target="_blank"
-                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpodwalker.herokuapp.com%2Fepisodes%2F<%=blogs[0]%>&amp;src=sdkpreparse"
+                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthepodwalker.com%2Fepisodes%2F<%=blogs[0]%>&amp;src=sdkpreparse"
                             class="fb-xfbml-parse-ignore"><i
                                 class="fab fa-facebook-f"></i></a>
                         <i id="shareBtn" class="fa fa-share"></i>
@@ -79,7 +80,7 @@
                     <h3>Today's Playlist</h3>
                     <%-blogs[0].playlist%>
                 </div>
-
+<!-- Side Bar Content -->
                 <h3>Today's Walk</h3>
                 <div class="mb-3 shadow-sm">
                     <div class="card p-2 " style="width: 100%;">

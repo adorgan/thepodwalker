@@ -8,7 +8,7 @@ router.use(function (req, res, next) {
 
 //500 error
 router.use(function (err, req, res, next) {
-    return res.status(500).send({ error: err });
+    return res.status(500).send(err);
 });
 
 module.exports = router;

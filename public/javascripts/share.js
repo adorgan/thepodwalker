@@ -1,3 +1,5 @@
+//Copies link of current article to clipboard
+
 var shareBtn = document.getElementById("shareBtn");
 shareBtn.addEventListener("click", function () {
 
