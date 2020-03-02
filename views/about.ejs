@@ -6,6 +6,14 @@
     <title>The Pod Walker</title>
     <meta name="description" content="About">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Facebook link preview meta tags -->
+    <meta property="og:url"
+        content="https://thepodwalker.com/episodes/<%=blogs[0]%>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title"
+        content="The Pod Walker: Episode <%=blogs[0].episodeNum%>" />
+    <meta property="og:description" content="<%=blogs[0].title%>" />
+    <meta property="og:image" content="<%=blogs[0].image%>" />
     <link rel="icon" href="/images/favicon.ico" type="image/png">
     <link
         href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap"
@@ -20,6 +28,11 @@
 </head>
 
 <body>
+<!-- facebook sharer script -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+
 <!-- nav bar -->
     <nav id="myNav" class="fixed-top navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -65,9 +78,9 @@
                 <div>
                     <div>
                         <a target="_blank"
-                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthepodwalker.com%2Fepisodes%2F<%=blogs[0]%>&amp;src=sdkpreparse"
-                            class="fb-xfbml-parse-ignore"><i
-                                class="fab fa-facebook-f"></i></a>
+                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthepodwalker.com%2Fepisodes%2F<%=blogs[0]%>&amp;src=sdkpreparse"
+                            class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i>
+                        </a>
                         <i id="shareBtn" class="fa fa-share"></i>
                     </div>
                 </div>
