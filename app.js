@@ -11,7 +11,8 @@ var bodyParser = require("body-parser"),
 
 var adminRoutes = require("./routes/admin"),
     subscribeRoutes = require("./routes/subscribe"),
-    indexRoutes = require("./routes/index");
+    indexRoutes = require("./routes/index"),
+    errorRoutes = require("./routes/error");
 
 mongoose.connect(passwords.passwordMongoDB, {
     useUnifiedTopology: true,
@@ -42,6 +43,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use(adminRoutes);
 app.use(subscribeRoutes);
 app.use(indexRoutes);
+app.use(errorRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
