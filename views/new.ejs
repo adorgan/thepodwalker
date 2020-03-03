@@ -21,12 +21,13 @@
 
 <body>
 <!-- new episode form -->
-    <div class="container d-flex justify-content-center">
+    <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center pt-3">
                 <h2>Add Blog Post</h2>
             </div>
-            <div class="col-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <form autocomplete=off action="/admin/episodes/new"
                     method="POST">
                     <div class="form-group">
@@ -75,9 +76,12 @@
                         <input type="text" class="form-control"
                             name="blog[walkTime]">
                     </div>
-                    <input class="btn btn-primary mb-5" type="submit" value="Submit">
+                    <div class="d-flex justify-content-center">
+                        <input class="btn btn-primary mb-5" type="submit" value="Submit">
+                    </div>
                 </form>
             </div>
+            <div class="col-md-2"></div>
         </div>
         <br>
     </div>
