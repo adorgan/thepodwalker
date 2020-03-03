@@ -78,14 +78,17 @@
                 <div>
                     <div>
                         <a target="_blank"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthepodwalker.com%2Fepisodes%2F5e585ef347fe071b5c86cfaa&src=sdkpreparse"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthepodwalker.com%2Fepisodes%2F<%=blogs[0]._id%>&src=sdkpreparse"
                             class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i>
                         </a>
                         <i id="shareBtn" class="fa fa-share"></i>
                     </div>
                 </div>
-                <img src="<%=blogs[0].image%>" class="card-img pb-3 pt-2"
-                    alt="...">
+                <img src="<%=blogs[0].image%>" class="card-img pb-0 pt-2"
+                    alt="About page picture">
+                <div class="image_citation px-2 pb-2 d-flex justify-content-end">
+                    <em>Captured by Tim Dorgan</em>
+                </div>    
                 <p class="mb-0"><%-blogs[0].body%></p>
             </div>
             <div class="col-lg-4 p-3">
@@ -98,7 +101,7 @@
                 <div class="mb-3 shadow-sm">
                     <div class="card p-2 " style="width: 100%;">
                         <img src="<%=blogs[0].walkImage%>" class="card-img-top"
-                            alt="...">
+                            alt="Map image">
                         <div class="card-body card-text p-2">
 
                             <ul>

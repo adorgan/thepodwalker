@@ -54,7 +54,8 @@
  <!-- individual episode content  -->
     <div class="container">
         <div class="row ">
-            <div class="col-12 p-3 rounded-sm">
+            <div class="col-2"></div>
+            <div class="col-8 p-3 rounded-sm">
                 <h3>Episodes</h3>
                 <% blogs.reverse().forEach(function(blog){ %>
                     <a href="/episodes/<%=blog._id %>"
@@ -81,6 +82,7 @@
                     </a>
                 <%}); %>
             </div>
+            <div class="col-2"></div>
         </div>
     </div>
 
