@@ -62,7 +62,7 @@
                         class="text-reset text-decoration-none">
                         <div class="shadow-sm card mb-3 p-md-2 "
                             style="max-width: 100%;">
-                            <div class="row no-gutters">
+                            <div class="row no-gutters p-1 p-md-0">
                                 <div class=" img-container col-5 col-lg-4 ">
                                     <img src="<%=blog.image%>"
                                         class="card-img p-2 p-md-1" alt="Main article image">
@@ -72,7 +72,7 @@
                                         <h5 class="card-title episode-title mb-0">
                                             Episode <%=blog.episodeNum%></h5>
                                         <p class="card-text mb-0"><%=blog.title%></p>
-                                        <p class="card-date .d-none .d-sm-block">
+                                        <p class="card-date d-none d-sm-block">
                                             <%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%>
                                         </p>
                                     </div>
