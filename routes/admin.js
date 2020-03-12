@@ -45,6 +45,7 @@ router.post("/admin/episodes/new", function (req, res) {
 
             Email.find({}, function (err, emailArray) {
                 emailArray.forEach(function (email) {
+                    setTimeout(function(){}, 2000);
                     var mailOptions = {
                         from: 'thepodwalker@gmail.com',
                         to: email.email,
