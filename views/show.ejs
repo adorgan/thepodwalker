@@ -15,6 +15,9 @@
     <meta property="og:description" content="<%=blog.title%>" />
     <meta property="og:image" content="<%=blog.image%>" />
 
+    <!-- facebook comments -->
+    <meta property="fb:app_id" content="2966151216800084" />
+
     <link
         href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap"
         rel="stylesheet">
@@ -92,6 +95,7 @@
                     <em>Captured by Tim Dorgan</em>
                 </div>
                 <p class="mb-0"><%-blog.body%></p>
+                <div class="fb-comments" data-href="https://thepodwalker.com/episodes/<%=blog._id%>" data-width="100%" data-numposts="5"></div>
             </div>
 
             <!-- Side bar content -->
