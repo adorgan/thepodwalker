@@ -11,4 +11,10 @@ shareBtn.addEventListener("click", function () {
     document.execCommand('copy');
     alert("Article link copied to clipboard");
     document.body.removeChild(dummy);
+});
+
+var fbShare = document.getElementById("fbComments");
+var plugin = document.getElementById("plugin");
+fbShare.addEventListener("click", function(){
+    plugin.scrollIntoView(true);
 })

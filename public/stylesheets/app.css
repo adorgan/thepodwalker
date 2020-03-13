@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+  }
 body {
     font-family: 'Oxygen', sans-serif;
     padding-top: 60px;
@@ -116,6 +119,7 @@ a:hover{
 
 .fab:hover {
     opacity: 0.7;
+    
 }
 .fa-facebook-f {
     background: #3B5998;
@@ -134,6 +138,7 @@ a:hover{
 
 .fa-share:hover {
     opacity: 0.7;
+    cursor: pointer;
 }
 
 #footer{
@@ -172,6 +177,25 @@ a:hover{
     color: #ffffff !important;
     background-color: #0E3386 !important;
     border-color: #0E3386 !important;
+}
+
+#fbComments{
+    padding: 2.4px;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 2px;
+    background: #CC3433;
+    color: white;
+}
+#fbComments:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.bylineName{
+    color: #0E3386;
 }
 
 @media only screen and (max-width: 600px) {
