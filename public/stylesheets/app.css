@@ -117,6 +117,24 @@ a:hover{
     margin: 0px 2px;
 }
 
+.far {
+    padding: 5px;
+    font-size: 20px;
+    width: 32px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 2px;
+}
+
+.fa-comments{
+    background: #CC3433;;
+    color: white;  
+}
+.fa-comments:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
 .fab:hover {
     opacity: 0.7;
     

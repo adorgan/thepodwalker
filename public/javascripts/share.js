@@ -13,7 +13,7 @@ shareBtn.addEventListener("click", function () {
     document.body.removeChild(dummy);
 });
 
-var fbShare = document.getElementById("fbComments");
+var fbShare = document.getElementById("commentsIcon");
 var plugin = document.getElementById("plugin");
 fbShare.addEventListener("click", function(){
     plugin.scrollIntoView(true);
