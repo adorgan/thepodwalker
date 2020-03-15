@@ -9,7 +9,27 @@ router.get("/", function (req, res) {
         if (err) {
             console.log("Error");
         } else {
-            res.render("index", { blogs: blogs });
+            var blogLength = blogs.length;
+            var newBLogs = blogs.slice(blogLength-4, blogLength);
+            res.render("index", { blogs: newBLogs });
+        }
+    });
+});
+
+//load more episodes
+router.get("/loadEpisodes", function (req, res) {
+    Blog.find({}, function (err, blogs) {
+        if (err) {
+            console.log("Error");
+        } else {
+            
+            var index = blogs.length - (4 + parseInt(req.query.loadIndex));
+            var blogStart = index - 3
+            if(blogStart < 0){
+                blogStart = 0;
+            }
+            var newBLogs = blogs.slice(blogStart, index);
+            res.render("partials/loadEpisodes", { blogs: newBLogs });
         }
     });
 });
