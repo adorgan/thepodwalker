@@ -53,7 +53,7 @@ router.post("/admin/episodes/new", function (req, res) {
                         html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
                                 "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
                                 "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
-                                "<div>Episode "+newBlog.episodeNum+"</div>"+ 
+                                "<div>"+newBlog.episodeNum+"</div>"+ 
                                 "<div><strong>" + newBlog.title + "</strong></div>"+
                                 "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image+"></a></div>"+
                                 "<br><br><br>"+
