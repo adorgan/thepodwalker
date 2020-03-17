@@ -1,5 +1,5 @@
 <% blogs.reverse().forEach(function(blog){ %>
-    <a id="episode<%=blog.episodeNum%>" href="/episodes/<%=blog._id %>"
+    <a id="episode<%=blog.episodeNum.substring(8, 9)%>" href="/episodes/<%=blog._id %>"
         class="text-reset text-decoration-none">
         <div class="shadow-sm card mb-3 p-md-2 "
             style="max-width: 100%;">
