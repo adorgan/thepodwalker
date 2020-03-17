@@ -18,7 +18,7 @@
                         <div class="col-8 col-lg-8">
                             <div class="card-body pl-0 pl-md-2 pb-1 py-md-1">
                                 <h5 class="card-title episode-title mb-0">
-                                    Episode <%=blog.episodeNum%></h5>
+                                    <%=blog.episodeNum%></h5>
                                 <p class="card-text mb-0"><%=blog.title%></p>
                                 <p class="card-date d-none d-sm-block">
                                     <%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%>
@@ -48,7 +48,7 @@
                         <div class="carousel-inner ">
                             <div class="carousel-item active">
                                 <div class="p-2" style="width: 100%;">
-                                    <h5>Episode <%=blogs[0].episodeNum%></h5>
+                                    <h5> <%=blogs[0].episodeNum%></h5>
                                     <img src="<%=blogs[0].walkImage%>"
                                         class="card-img-top" alt="Map of walk">
                                     <div class="card-body card-text p-2">
@@ -66,7 +66,7 @@
                             <% blogs.slice(1, 3).forEach(function(blog){ %>
                             <div class="carousel-item">
                                 <div class=" p-2 " style="width: 100%;">
-                                    <h5>Episode <%=blog.episodeNum%></h5>
+                                    <h5> <%=blog.episodeNum%></h5>
                                     <img src="<%=blog.walkImage%>"
                                         class="card-img-top" alt="Map of walk">
                                     <div class="card-body card-text p-2">
