@@ -23,8 +23,7 @@ loadBtn.addEventListener("click", function(){
             divEp.appendChild(divNew);
             
             //increment loaded episode count
-            epCount =+ 3;
-
+            epCount = epCount + 3;
             //if episode 0 exists, hide Load More button
             if($('#episode0').length){
                 loadBtn.style.display = "none";
