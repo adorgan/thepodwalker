@@ -10,7 +10,7 @@ router.get("/", function (req, res) {
             console.log("Error");
         } else {
             var blogLength = blogs.length;
-            var newBLogs = blogs.slice(blogLength-4, blogLength);
+            var newBLogs = blogs.slice(blogLength-6, blogLength);
             res.render("index", { blogs: newBLogs });
         }
     });
@@ -23,7 +23,7 @@ router.get("/loadEpisodes", function (req, res) {
             console.log("Error");
         } else {
             
-            var index = blogs.length - (4 + parseInt(req.query.loadIndex));
+            var index = blogs.length - (6 + parseInt(req.query.loadIndex));
             var blogStart = index - 3
             if(blogStart < 0){
                 blogStart = 0;
