@@ -86,6 +86,10 @@ router.get("/privacy", function (req, res) {
     res.render("privacy");
 });
 
+router.get("/test", function (req, res) {
+    res.render("test");
+});
+
 module.exports = router;
 
 
