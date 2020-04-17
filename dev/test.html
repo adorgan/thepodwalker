@@ -7,59 +7,41 @@
 
 <h2 style="text-align:center">Lightbox</h2>
 
-<div class="row">
-  <div class="column">
-    <img src="episode 5.jpeg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-    <div class="center-left"><i class="fas fa-expand-arrows-alt"></i>
-    </div>
-    <div class="center-right">></div>
-    </div>
-<div><p>This is a sample caption</p></div>
- 
- 
-</div>
-
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-
-    <div class="mySlides">
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    <div class="slideshow-container">
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
       <div class="numbertext">1 / 4</div>
-      <img src="episode 5.jpeg" style="width:100%">
+      <img src="Testimage1.jpeg" style="width:100%" alt="funny caption 1 asdflkjsdfj sdlfkjs lsdkfjlskdjf lkj sdflkjs dfjlj sdf">
+      
     </div>
-
-    <div class="mySlides">
+  
+    <div class="mySlides fade">
       <div class="numbertext">2 / 4</div>
-      <img src="image 9.jpeg" style="width:100%">
+      <img src="Testimage2.jpeg" style="width:100%" alt="funny caption 2">
+      
     </div>
-
-    <div class="mySlides">
+  
+    <div class="mySlides fade">
       <div class="numbertext">3 / 4</div>
-      <img src="Image13.jpeg" style="width:100%">
-    </div>
-    
-    
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-    <div class="caption-container">
-      <p id="caption"></p>
+      <img src="Test image3.jpeg" style="width:100%" alt="funny caption 3">
+      
     </div>
 
-
-    <div class="column">
-      <img hidden class="demo cursor" src="episode 5.jpeg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
-    </div>
-    <div class="column">
-      <img hidden class="demo cursor" src="image 9.jpeg" style="width:100%" onclick="currentSlide(2)" alt="Snow">
-    </div>
-    <div class="column">
-      <img hidden class="demo cursor" src="Image13.jpeg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-    </div>
-   
-  </div>
+    <div class="mySlides fade">
+        <div class="numbertext">4 / 4</div>
+        <img src="Testimage4.jpeg" style="width:100%" alt="funny caption 4">
+        
+      </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-arrow-alt-circle-left"></i></a>
+    <a class="next" onclick="plusSlides(1)"><i class="fas fa-arrow-alt-circle-right"></i></a>
 </div>
-
+<div id="caption"></div>
+</div>
+  <br>
 
     <script src="script.js"></script>
 </body>
