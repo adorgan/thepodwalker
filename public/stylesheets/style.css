@@ -268,6 +268,10 @@ a:hover{
     width: 100%;
     max-width: 600px;
   }
+
+  .slide-pic-container{
+    position: relative;
+}
   
   /* The Close Button */
   .close-modal {
@@ -299,7 +303,7 @@ a:hover{
   #next-modal {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 57%;
     width: auto;
     padding: 16px;
     margin-top: -50px;
