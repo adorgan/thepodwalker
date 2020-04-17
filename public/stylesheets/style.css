@@ -228,46 +228,155 @@ a:hover{
 	animation-duration: 2s;
 }
 
-
-
-
-
-.carousel-inner p{
-    font-size: 12px ;
+.main-caption{
+    font-size: 12px;
 }
 
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
+
+
+
+.column {
+    position: relative;
+    width: 100%;
+  }
+.column:hover{
+    cursor: pointer;
+}
   
-  width: 40px;
-  height: 40px;
+  /* The Modal (background) */
+  .modal {
+    margin-top: 50px;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
  
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* The Close Button */
+  .close-modal {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close-modal:hover,
+  .close-modal:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .mySlides {
+    display: none;
+  }
+  
+  .cursor-modal {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  #prev-modal,
+  #next-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  #next-modal {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  #prev-modal:hover,
+  #next-modal:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  img {
+    margin-bottom: -4px;
+  }
+  
+  .caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+  }
+  
+  .demo {
+    opacity: 0.6;
+  }
+  
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+  
+  img.hover-shadow {
+    transition: 0.3s;
+  }
+  
+  .hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 
+  .center-left{
+      position: absolute;
+      bottom: 40%;
+      right:18px;  
+  }
+
+  
+
+.slide-caption{
+    font-size: 12px;
+    margin-top: 10px;
 }
 
-.carousel-control-next-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
-}
-
-.carousel-control-prev-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
-}
-
-.carousel-control-next, 
-.carousel-control-prev{
-   width: 10%;
-}
-
-#carouselExampleControls p{
-    border-left: 2px solid #0E3386;
-    margin: 3px;
-    padding: 5px;
-    
-}
-
-.carousel-captions{
-    height: 50px;
-    margin-bottom: 5px;
+.fa-chevron-right{
+    color: white;
+    font-size: 40px;
 }
 
 
@@ -303,18 +412,14 @@ a:hover{
         width: 100%;
     }
 
-    .carousel-inner img{
-        display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    #prev-modal:hover,
+  #next-modal:hover {
+    background-color: rgba(255, 255, 255, 0);
+  }
+   
+    
 
 }
 
-@media only screen and (min-width: 800px) {
-    .carousel-inner img{
-        max-height: 400px;
-        
-    }
-}
+
 

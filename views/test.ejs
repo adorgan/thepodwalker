@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/images/favicon.ico" type="image/png">
 
-  
+
 
 
 
@@ -63,7 +63,7 @@
                 <h6>By <a class="bylineName" href="/about">Tim Dorgan</a> |
                     Feb 13, 2020
                 </h6>
-                <div>
+                <div class="mb-2">
                     <div>
                         <a target="_blank"
                             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthepodwalker.com%2Fepisodes%2F&amp;src=sdkpreparse"
@@ -71,103 +71,195 @@
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <i id="shareBtn" class="fa fa-share"></i>
-                        
-                            <a id="commentsIcon">
-                                
-                                <i class=" fab far fa-comments"></i>
-                                
-                            </a>
-                        
-                        
-                        
-                        
-                         </div>
+
+                        <a id="commentsIcon">
+
+                            <i class=" fab far fa-comments"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="column">
+                    <img src="/images/image10.jpeg" style="width:100%" onclick="openModal();currentSlide(1)"
+                        class="hover-shadow cursor">
+                    <div onclick="openModal();currentSlide(1)" class="center-left"><i class="fas fa-chevron-right"></i>
+
+
+                    </div>
+
+                </div>
+                <div class="carousel-captions">
+                    <p class="slide-caption">Having a bonding moment with our intrepid guide Davinder. I particularly
+                        admired his head gear which was purchased recently at a second hand store called Turban Renewal.
+                    </p>
+                </div>
+
+                <div id="myModal" class="modal">
+                    <span class="close-modal cursor-modal" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+
+                        <div class="mySlides">
+                            <div class="numbertext">1 / 4</div>
+                            <img src="/images/image10.jpeg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">2 / 4</div>
+                            <img src="/images/image11.jpeg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">3 / 4</div>
+                            <img src="/images/image8.jpeg" style="width:100%">
+                        </div>
+
+
+                        <a id="prev-modal" onclick="plusSlides(-1)">&#10094;</a>
+                        <a id="next-modal" onclick="plusSlides(1)">&#10095;</a>
+
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+
+
+                        <div class="column">
+                            <img hidden class="demo cursor" src="/images/image10.jpeg" style="width:100%"
+                                onclick="currentSlide(1)"
+                                alt="Having a bonding moment with our intrepid guide Davinder. I particularly admired his head gear which was purchased recently at a second hand store called Turban Renewal.">
+                        </div>
+                        <div class="column">
+                            <img hidden class="demo cursor" src="/images/image11.jpeg" style="width:100%"
+                                onclick="currentSlide(2)" alt="Snow">
+                        </div>
+                        <div class="column">
+                            <img hidden class="demo cursor" src="/images/image8.jpeg" style="width:100%"
+                                onclick="currentSlide(3)" alt="Mountains and fjords">
+                        </div>
+
+                    </div>
                 </div>
 
 
 
-                
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false" >
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="/images/image10.jpeg" class="d-block w-100" alt="...">
-                        <div class="carousel-captions">
-                            <p>Having a bonding moment with our intrepid guide Davinder. I particularly admired his head gear which was purchased recently at a second hand store called Turban Renewal.</p>
-                        </div>
-                      </div>
-                      
-                      <div class="carousel-item">
-                        <img src="/images/image11.jpeg" class="d-block w-100" alt="...">
-                        <div class="carousel-captions">
-                            <p>Fellow traveler can’t hide his dismay upon being paired with the largest tour participant. This reaction pales in comparison however to that of the poor guy that had to pedal our asses all over Old Delhi.</p>
-                        </div>
-                      </div>
-                      <div class="carousel-item">
-                        <img src="/images/image8.jpeg" class="d-block w-100" alt="...">
-                        <div class="carousel-captions">
-                            <p>When in Rome...or wherever</p>
-                        </div>
-                      </div>
-                      
-                
-                    
-                      
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>
-
-                  
-                 
-                  
-
-                
-                
-                
-                
                 <!-- <div class="image_citation px-2 pb-2 d-flex justify-content-end">
                     <em>Captured by Tim Dorgan</em>
                 </div> -->
-                <p class="mb-0"><p>When I started this blog my plan was to include Pod Walks from all over the world. Well, the coronavirus pandemic put a hold on that. We were originally scheduled to be in Nashville for the month of April...enjoying the company of family and friends in one of our favorite cities. Unfortunately we had to cancel those plans. But, in the spirit of turning lemons into lemonade, why not do a virtual Pod Walk? This is the first of, what I hope to be, a series of periodic virtual walks in many of the great cities around the country, and the world.</p>
-                <p>This walk begins in the revitalized East Nashville neighborhood. Home to some of our oldest friends, East Nashville is a vibrant area of redevelopment, great restaurants and quirky shops. Unfortunately, this area recently fell victim to the vicious tornado that swept through central Tennessee. Our walk witnessed leveled homes and shuttered businesses whose reconstruction is inevitable, but delayed by the current crisis.</p>
-                <p>I then headed south into downtown Nashville for a quick walk down Broadway, the honky tonk capital of Music City. I&rsquo;ve been coming here for nearly 50 years but it never gets old. Where else can you wander into a bar at 2 in the afternoon and here a &ldquo;nobody&rdquo; performer that you swear is the best guitar player you&rsquo;ve ever heard? My favorite spot on Broadway is Robert&rsquo;s Western World, a Nashville institution that offers up cold beer and hot music (not just country) all day long.</p>
-                <p>Next stop is Centennial Park near the Vanderbilt campus. Here you can find a massive replica of the Greek Parthenon...only in much better shape than the original. From here I headed north past the Tennessee State Capitol, the Nashville Sounds stadium and into the Germantown neighborhood. Germantown also fell victim to the recent tornado. While there was a great deal of damage, it fortunately spared the home of our son and also missed Alexis &amp; Bolt, the store owned by our daughter-in-law. Just down the street I was able to stop at 312, a great pizza place owned and operated by an ex-Chicagoan. I then finished my walk by burning a few of those pizza calories on my way back to East Nashville. Overall a refreshing 12 mile walk that gave me the opportunity to listen to a few Nashville-relevant podcasts.</p>
-                <p><strong>Dolly Parton&rsquo;s America (3 Episodes)</strong></p>
-                <p><strong>Sad Ass Songs (57:23)</strong></p>
-                <p><strong>The Only One For Me, Jolene (36:05)</strong></p>
-                <p><strong>Dixie Disappearance (38:38)</strong></p>
-                <p>This 11 part series really took me by surprise. Recommended by my niece, I began listening with fairly low expectations. My knowledge of Dolly Parton was limited. I knew about her movie roles, a few of her songs...and I knew about Dollywood. What I didn&rsquo;t know, among other things, is that she&rsquo;s written over 3000 songs, that she&rsquo;s given millions of books to Tennessee children, that Nelson Mandela played her music while in captivity on Robbins Island or that she&rsquo;s worth somewhere north of a half a billion dollars.</p>
-                <p>This podcast reveals all of this and much, much more. It digs into not only who Dolly is, but how and why she touches so many people across a wide swath of American culture. Old, young, conservative, liberal...her fan base is one that many politicians would die for.</p>
-                <p>I would highly recommend listening to this series start to finish. But, if time won&rsquo;t allow, I&rsquo;ve selected 3 episodes I found particularly interesting.</p>
-                <p><strong>Sad Ass Songs</strong> kicks off the series and provides the background that puts the entire series in context. <strong>The Only One For Me, Jolene</strong> digs into one of Dolly&rsquo;s most iconic songs. Jolene was one of the first songs I learned on the guitar. This podcast digs into the magic in the song&rsquo;s music and lyrics and even offers an interesting, and surprising sexual take on the singer&rsquo;s relationship with the magical Jolene. And finally, <strong>Dixie Disappearance</strong> explores Dolly&rsquo;s handling of the controversy over one of the cornerstone musical performances at Dollywood, Dolly&rsquo;s east Tennessee theme park.</p>
-                <p><strong>Revisionist History: Nashville Revolution, Bobby Braddock, Don Schlitz and Don Henry (50:22)</strong></p>
-                <p>Malcolm Gladwell&rsquo;s <strong>Revisionist History</strong> is one of the most entertaining, intriguing podcasts you&rsquo;ll ever listen to. Going into his 5th season, Gladwell explores old topics in a very new way. His multi-episode explorations of higher education and other topics urge us all to take a fresh look at everything around us. Always a good practice.</p>
-                <p>This episode is an older one that digs into the transformation of country music in Nashville during the 1970&rsquo;s. Rather than speak with recording artists, Gladwell interviews the songwriters that were at the heart of the movement. You may not know the names Braddock, Schlitz (not the beer) or Henry, but you certainly know their songs. Don Schlitz wrote a little song called <strong>The Gambler</strong> that he couldn&rsquo;t get anyone to record. Finally, Kenny Rogers gave it a shot and Don Schlitz&rsquo; life was changed forever (more on that later). In this podcast, Schlitz (a good singer in his own right) plays/sings the original arrangement of <strong>The Gambler</strong>...the other writers do the same on some of their most famous works. Definitely worth a listen.</p>
-                <p><strong>WSM&rsquo;s Coffee, Country and Cody (2 episodes)</strong></p>
-                <p><strong>Charlie Worsham &amp; Richard Caspar (15:01)</strong></p>
-                <p><strong>Don Schlitz Tribute to Kenny Rogers (12:18)</strong></p>
-                <p>WSM is a Nashville institution. The home of The Grand Ol&rsquo; Opry, this clear channel radio station has been blasting out country music for decades. And a big part of the WSM franchise is Bill Cody, A 2008 inductee into the Country Music Disc Jockey Hall of Fame (yes, there is such a thing), Cody is the host of this podcast which features country music&rsquo;s biggest stars.</p>
-                <p>Charlie Worsham is the focus of the first of two episodes I listened to on this walk. Honestly, I&rsquo;d never heard of him...sorry country music fans. He sampled a bit of his music, which was pleasant enough. But it was his back story that really got me. Charlie is a U.S Marine who served in George W. Bush&rsquo;s protection detail. When given the opportunity to remain in this post or deploy to Iraq, he chose the latter. He was wounded several times, having multiple Humvees blow up with him inside. He came back home, dealt with PTSD and turned his creative talents into a successful country music career. Helluva story.</p>
-                <p>The second podcast features the aforementioned Don Schlitz, writer of the iconic song <strong>The Gambler</strong>. This podcast was full of raw emotion as Don, and the rest of the country music world, mourned the passing of Kenny Rogers. This is worth a listen to get inside the relationship Don had with a man who literally changed his life by deciding to record a song that so many other artists had turned down. Touching.</p>
-                <p><strong>Curious Nashville: The True Stories Behind Nashville&rsquo;s Claims To Fame (29:16)</strong></p>
-                <p>Produced by Nashville Public Radio, <strong>Curious Nashville</strong> is very similar to the <strong>Curious City</strong> podcast developed by WBEZ, Chicago&rsquo;s public radio station. In a relatively short podcast, <strong>Curious Nashville</strong> provides the back story to many aspects of this very interesting city.</p>
-                <p>This episode explores several of Nashville&rsquo;s historical and recent claims to fame: it&rsquo;s status as an &ldquo;It city&rdquo;, its hot chicken and its Music City moniker. The hot chicken story is a country music song waiting to be written. Legend has it that the girlfriend of Prince&rsquo;s Hot Chicken Shack founder Thornton Prince was so upset at his womanizing that she added extra pepper to his chicken as revenge. The rest is culinary history.</p>
-                <p>Nashville&rsquo;s &ldquo;It City&rdquo; status is well known. Spurred by a strong economy, its BIg 4 sports profile and the incredible Nashville music scene, the city is one of America&rsquo;s &ldquo;hottest&rdquo;. If you don&rsquo;t believe it, check out the number of bachelor and bachelorette parties down on Broadway on any given weekend.</p>
-                <p>Finally, this podcast puts a new spin on the title of &ldquo;Music City&rdquo;. Historian David Ewing claims that the original &ldquo;Music City&rdquo; title traces to Nashville-based Fisk University&rsquo;s Jubilee Singers. Founded in 1871, the Jubilee Singers gained fame by donating the proceeds from their initial performances to Chicago Fire relief efforts. This largesse earned them invitations to perform all over the world, spawning many, many imitators and earning their hometown the title of &ldquo;Music City&rdquo;.</p>
-                <p>That&rsquo;s all for this virtual tour. Pod Walker out.</p></p>
-                <div id="plugin" class="fb-comments" data-href="https://thepodwalker.com/episodes/test" data-width="100%"
-                    data-numposts="5"></div>
+                <p class="mb-0">
+                    <p>When I started this blog my plan was to include Pod Walks from all over the world. Well, the
+                        coronavirus pandemic put a hold on that. We were originally scheduled to be in Nashville for the
+                        month of April...enjoying the company of family and friends in one of our favorite cities.
+                        Unfortunately we had to cancel those plans. But, in the spirit of turning lemons into lemonade,
+                        why not do a virtual Pod Walk? This is the first of, what I hope to be, a series of periodic
+                        virtual walks in many of the great cities around the country, and the world.</p>
+                    <p>This walk begins in the revitalized East Nashville neighborhood. Home to some of our oldest
+                        friends, East Nashville is a vibrant area of redevelopment, great restaurants and quirky shops.
+                        Unfortunately, this area recently fell victim to the vicious tornado that swept through central
+                        Tennessee. Our walk witnessed leveled homes and shuttered businesses whose reconstruction is
+                        inevitable, but delayed by the current crisis.</p>
+                    <p>I then headed south into downtown Nashville for a quick walk down Broadway, the honky tonk
+                        capital of Music City. I&rsquo;ve been coming here for nearly 50 years but it never gets old.
+                        Where else can you wander into a bar at 2 in the afternoon and here a &ldquo;nobody&rdquo;
+                        performer that you swear is the best guitar player you&rsquo;ve ever heard? My favorite spot on
+                        Broadway is Robert&rsquo;s Western World, a Nashville institution that offers up cold beer and
+                        hot music (not just country) all day long.</p>
+                    <p>Next stop is Centennial Park near the Vanderbilt campus. Here you can find a massive replica of
+                        the Greek Parthenon...only in much better shape than the original. From here I headed north past
+                        the Tennessee State Capitol, the Nashville Sounds stadium and into the Germantown neighborhood.
+                        Germantown also fell victim to the recent tornado. While there was a great deal of damage, it
+                        fortunately spared the home of our son and also missed Alexis &amp; Bolt, the store owned by our
+                        daughter-in-law. Just down the street I was able to stop at 312, a great pizza place owned and
+                        operated by an ex-Chicagoan. I then finished my walk by burning a few of those pizza calories on
+                        my way back to East Nashville. Overall a refreshing 12 mile walk that gave me the opportunity to
+                        listen to a few Nashville-relevant podcasts.</p>
+                    <p><strong>Dolly Parton&rsquo;s America (3 Episodes)</strong></p>
+                    <p><strong>Sad Ass Songs (57:23)</strong></p>
+                    <p><strong>The Only One For Me, Jolene (36:05)</strong></p>
+                    <p><strong>Dixie Disappearance (38:38)</strong></p>
+                    <p>This 11 part series really took me by surprise. Recommended by my niece, I began listening with
+                        fairly low expectations. My knowledge of Dolly Parton was limited. I knew about her movie roles,
+                        a few of her songs...and I knew about Dollywood. What I didn&rsquo;t know, among other things,
+                        is that she&rsquo;s written over 3000 songs, that she&rsquo;s given millions of books to
+                        Tennessee children, that Nelson Mandela played her music while in captivity on Robbins Island or
+                        that she&rsquo;s worth somewhere north of a half a billion dollars.</p>
+                    <p>This podcast reveals all of this and much, much more. It digs into not only who Dolly is, but how
+                        and why she touches so many people across a wide swath of American culture. Old, young,
+                        conservative, liberal...her fan base is one that many politicians would die for.</p>
+                    <p>I would highly recommend listening to this series start to finish. But, if time won&rsquo;t
+                        allow, I&rsquo;ve selected 3 episodes I found particularly interesting.</p>
+                    <p><strong>Sad Ass Songs</strong> kicks off the series and provides the background that puts the
+                        entire series in context. <strong>The Only One For Me, Jolene</strong> digs into one of
+                        Dolly&rsquo;s most iconic songs. Jolene was one of the first songs I learned on the guitar. This
+                        podcast digs into the magic in the song&rsquo;s music and lyrics and even offers an interesting,
+                        and surprising sexual take on the singer&rsquo;s relationship with the magical Jolene. And
+                        finally, <strong>Dixie Disappearance</strong> explores Dolly&rsquo;s handling of the controversy
+                        over one of the cornerstone musical performances at Dollywood, Dolly&rsquo;s east Tennessee
+                        theme park.</p>
+                    <p><strong>Revisionist History: Nashville Revolution, Bobby Braddock, Don Schlitz and Don Henry
+                            (50:22)</strong></p>
+                    <p>Malcolm Gladwell&rsquo;s <strong>Revisionist History</strong> is one of the most entertaining,
+                        intriguing podcasts you&rsquo;ll ever listen to. Going into his 5th season, Gladwell explores
+                        old topics in a very new way. His multi-episode explorations of higher education and other
+                        topics urge us all to take a fresh look at everything around us. Always a good practice.</p>
+                    <p>This episode is an older one that digs into the transformation of country music in Nashville
+                        during the 1970&rsquo;s. Rather than speak with recording artists, Gladwell interviews the
+                        songwriters that were at the heart of the movement. You may not know the names Braddock, Schlitz
+                        (not the beer) or Henry, but you certainly know their songs. Don Schlitz wrote a little song
+                        called <strong>The Gambler</strong> that he couldn&rsquo;t get anyone to record. Finally, Kenny
+                        Rogers gave it a shot and Don Schlitz&rsquo; life was changed forever (more on that later). In
+                        this podcast, Schlitz (a good singer in his own right) plays/sings the original arrangement of
+                        <strong>The Gambler</strong>...the other writers do the same on some of their most famous works.
+                        Definitely worth a listen.</p>
+                    <p><strong>WSM&rsquo;s Coffee, Country and Cody (2 episodes)</strong></p>
+                    <p><strong>Charlie Worsham &amp; Richard Caspar (15:01)</strong></p>
+                    <p><strong>Don Schlitz Tribute to Kenny Rogers (12:18)</strong></p>
+                    <p>WSM is a Nashville institution. The home of The Grand Ol&rsquo; Opry, this clear channel radio
+                        station has been blasting out country music for decades. And a big part of the WSM franchise is
+                        Bill Cody, A 2008 inductee into the Country Music Disc Jockey Hall of Fame (yes, there is such a
+                        thing), Cody is the host of this podcast which features country music&rsquo;s biggest stars.</p>
+                    <p>Charlie Worsham is the focus of the first of two episodes I listened to on this walk. Honestly,
+                        I&rsquo;d never heard of him...sorry country music fans. He sampled a bit of his music, which
+                        was pleasant enough. But it was his back story that really got me. Charlie is a U.S Marine who
+                        served in George W. Bush&rsquo;s protection detail. When given the opportunity to remain in this
+                        post or deploy to Iraq, he chose the latter. He was wounded several times, having multiple
+                        Humvees blow up with him inside. He came back home, dealt with PTSD and turned his creative
+                        talents into a successful country music career. Helluva story.</p>
+                    <p>The second podcast features the aforementioned Don Schlitz, writer of the iconic song <strong>The
+                            Gambler</strong>. This podcast was full of raw emotion as Don, and the rest of the country
+                        music world, mourned the passing of Kenny Rogers. This is worth a listen to get inside the
+                        relationship Don had with a man who literally changed his life by deciding to record a song that
+                        so many other artists had turned down. Touching.</p>
+                    <p><strong>Curious Nashville: The True Stories Behind Nashville&rsquo;s Claims To Fame
+                            (29:16)</strong></p>
+                    <p>Produced by Nashville Public Radio, <strong>Curious Nashville</strong> is very similar to the
+                        <strong>Curious City</strong> podcast developed by WBEZ, Chicago&rsquo;s public radio station.
+                        In a relatively short podcast, <strong>Curious Nashville</strong> provides the back story to
+                        many aspects of this very interesting city.</p>
+                    <p>This episode explores several of Nashville&rsquo;s historical and recent claims to fame:
+                        it&rsquo;s status as an &ldquo;It city&rdquo;, its hot chicken and its Music City moniker. The
+                        hot chicken story is a country music song waiting to be written. Legend has it that the
+                        girlfriend of Prince&rsquo;s Hot Chicken Shack founder Thornton Prince was so upset at his
+                        womanizing that she added extra pepper to his chicken as revenge. The rest is culinary history.
+                    </p>
+                    <p>Nashville&rsquo;s &ldquo;It City&rdquo; status is well known. Spurred by a strong economy, its
+                        BIg 4 sports profile and the incredible Nashville music scene, the city is one of
+                        America&rsquo;s &ldquo;hottest&rdquo;. If you don&rsquo;t believe it, check out the number of
+                        bachelor and bachelorette parties down on Broadway on any given weekend.</p>
+                    <p>Finally, this podcast puts a new spin on the title of &ldquo;Music City&rdquo;. Historian David
+                        Ewing claims that the original &ldquo;Music City&rdquo; title traces to Nashville-based Fisk
+                        University&rsquo;s Jubilee Singers. Founded in 1871, the Jubilee Singers gained fame by donating
+                        the proceeds from their initial performances to Chicago Fire relief efforts. This largesse
+                        earned them invitations to perform all over the world, spawning many, many imitators and earning
+                        their hometown the title of &ldquo;Music City&rdquo;.</p>
+                    <p>That&rsquo;s all for this virtual tour. Pod Walker out.</p>
+                </p>
+                <div id="plugin" class="fb-comments" data-href="https://thepodwalker.com/episodes/test"
+                    data-width="100%" data-numposts="5"></div>
             </div>
 
             <!-- Side bar content -->
             <div class="col-lg-4 p-3">
-                
+
 
             </div>
         </div>
