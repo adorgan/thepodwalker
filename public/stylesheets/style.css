@@ -1,0 +1,370 @@
+html {
+    scroll-behavior: smooth;
+  }
+body {
+    font-family: 'Oxygen', sans-serif;
+    padding-top: 60px;
+    
+    background-color: rgb(249, 249, 250)
+}
+
+a {
+    color: #CC3433;
+}
+
+a:hover{
+    color: rgb(177, 38, 38);
+    text-decoration: none;
+}
+
+.navbar{
+    background: #0E3386;
+}
+
+.navbar-dark .navbar-toggler{
+    color: rgb(255, 255, 255);
+}
+
+.navbar-brand{
+    font-size: 24px;
+}
+
+.header{
+    width: 150px;
+    border-bottom: 2px solid #CC3433;
+    border-right: 2px solid #CC3433;
+    padding: 0 5px 5px 0;
+}
+
+.episode-title{
+    color: #CC3433;
+    font-size: 22px;
+}
+
+.card-text{
+    font-weight: 700;
+    font-size: 20px;  
+}
+.card{
+    border-radius: 0;
+    max-width: 100%;
+    display: block;  
+}
+
+.card-img-top{
+    border-radius: 0;
+}
+
+.card-img{
+    border-radius: 0;
+}
+.card-body {
+    padding-top: 10px;
+}
+
+.image_citation{
+    font-size: 12px;
+}
+
+.episode-number{
+    border-right: 2px solid #CC3433;
+    border-bottom: 2px solid #CC3433;
+    padding-right: .3em;
+    padding-bottom: .3em;
+    font-weight: bold;
+}
+
+#about img{
+    max-width: 300px;
+}
+
+#about .card{
+    border: none;
+    padding: 8px;
+    background-color: rgb(249, 249, 250)
+}
+
+.card li{
+    list-style-type: square;
+    font-weight: 400;
+}
+
+.card ul{
+    padding-left: 16px;
+    margin-bottom: 0;
+}
+
+.subscribe-container{
+    width: 400px;
+    margin-bottom: 400px;
+}
+
+.subscribe-status{
+    color: green;
+}
+
+.fa-hiking {
+    font-size: 28px;
+    color: #CC3433;
+    padding-right: 5px;
+}
+.fab {
+    padding: 5px;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 2px;
+}
+
+.far {
+    padding: 5px;
+    font-size: 20px;
+    width: 32px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 2px;
+}
+
+.fa-comments{
+    background: #CC3433;;
+    color: white;  
+}
+.fa-comments:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.fab:hover {
+    opacity: 0.7;
+    
+}
+.fa-facebook-f {
+    background: #3B5998;
+    color: white;
+  }
+.fa-share{
+    padding: 5px;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 2px;
+    background: green;
+    color: white;
+}
+
+.fa-share:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#footer{
+    height: 60px;
+    background: #0E3386;
+    margin-top: 100px;
+}
+
+.footer-text{
+    font-size: 12px;
+    color: white;
+    margin: 0;
+}
+
+#footer a{
+    color: #CC3433;
+}
+
+.privacy{
+    margin: 50px;
+    width: 90%;
+    height: 600px;
+    overflow: scroll;
+}
+
+.btn-primary {
+   background-color: #0E3386;
+    border-color: #0E3386;    
+}
+
+.btn-primary:hover{
+    background-color: rgb(53, 81, 148);
+}
+
+.btn-primary:active, .btn-primary:focus {
+    color: #ffffff !important;
+    background-color: #0E3386 !important;
+    border-color: #0E3386 !important;
+}
+
+#fbComments{
+    padding: 2.4px;
+    font-size: 20px;
+    
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 2px;
+    background: #CC3433;
+    color: white;
+}
+#fbComments:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.bylineName{
+    color: #0E3386;
+}
+
+.bylineName:hover{
+    color: rgb(46, 77, 148);
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+
+#caption{
+    font-size: 12px;
+    border-left: 2px solid #0E3386;
+    padding: 4px;
+    margin: 4px;
+    
+}
+
+/* .caption-container{
+    height: 75px;
+} */
+
+
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Next & previous buttons */
+  .prev-slide, .next-slide {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: -22px;
+    color: white !important;
+    font-weight: bold;
+    font-size: 32px;
+    transition: 0.6s ease;
+    border-radius: 3px;
+    user-select: none;
+    
+  }
+  
+  /* Position the "next button" to the right */
+  .next-slide {
+    right: 0;
+    border-radius: 3px;
+  }
+  
+  .next-slide:hover, .prev-slide:hover{
+      
+      background: rgba(0, 0, 0, 0.644);
+  }
+  
+  /* Caption text */
+  .text {
+    
+    font-size: 15px;
+    
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: black;
+    background: white;
+    font-size: 12px;
+    padding: 2px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade !important;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  .fade:not(.show) {
+    opacity: 1;
+}
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .prev, .next,.text {font-size: 11px}
+  }
+
+@media only screen and (max-width: 600px) {
+    
+    .episode-title{
+        font-size: 16px;
+    }
+
+    .card-date{
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+   .card-body{
+       padding-top: 5px;
+   }
+    .card-text{
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+    .subscribe-container{
+        width: 100%;
+    }
+
+    .prev-slide, .next-slide {
+        
+        padding: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+
+    .next-slide:hover, .prev-slide:hover{
+      
+        background: rgba(0, 0, 0, 0);
+    }
+
+    
+   
+    
+
+}
+
+
+
