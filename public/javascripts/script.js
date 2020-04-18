@@ -1,3 +1,28 @@
+var imageAlts = document.getElementsByTagName("img");
+var alts = [];
+
+for(var i = 0; i < imageAlts.length; i++){
+    alts[i] = imageAlts[i].alt;
+}
+
+var longest = "";
+for(var i = 0; i < imageAlts.length; i++){
+    if(alts[i].length >= longest.length){
+        longest = alts[i];
+    }
+}
+
+
+var divComment = document.getElementById("caption-container");
+var caption = document.getElementById("caption");
+
+function calcCommentHeight(){
+    caption.innerHTML = longest;
+    divComment.style.height = caption.offsetHeight + 12 ;
+}
+calcCommentHeight();
+
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
