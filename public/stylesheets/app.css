@@ -216,6 +216,10 @@ a:hover{
     color: #0E3386;
 }
 
+.bylineName:hover{
+    color: rgb(46, 77, 148);
+}
+
 .fade-in {
 	opacity: 1;
 	animation-name: fadeInOpacity;
