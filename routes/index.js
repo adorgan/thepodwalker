@@ -54,7 +54,12 @@ router.get("/episodes/:id", function (req, res) {
             console.log(err);
         }
         else {
-            res.render("show", { blog: foundBlog });
+            if(foundBlog.image.length > 1){
+                res.render("test", { blog: foundBlog });
+            }
+            else{
+                res.render("show", { blog: foundBlog });
+            }
         }
     });
 });

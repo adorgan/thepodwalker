@@ -2,7 +2,8 @@ var mongoose = require("mongoose");
 
 var blogSchema = new mongoose.Schema({
     title: String,
-    image: String, //{type: Array, default: []},
+    image: {type: Array, default: []},
+    caption: {type: Array, default: []},
     body: String,
     playlist: String,
     episodeNum: String,

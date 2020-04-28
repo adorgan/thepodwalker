@@ -5,6 +5,9 @@ for(var i = 0; i < imageAlts.length; i++){
     alts[i] = imageAlts[i].alt;
 }
 
+
+
+
 var longest = "";
 for(var i = 0; i < imageAlts.length; i++){
     if(alts[i].length >= longest.length){
@@ -26,7 +29,16 @@ calcCommentHeight();
 var slideIndex = 1;
 showSlides(slideIndex);
 
+slideFadeCount = 0;
+
 function plusSlides(n) {
+  if(slideFadeCount == 0){
+      var picDivs = document.getElementsByClassName("mySlides");
+      for(var i = 0; i < picDivs.length; i++){
+        picDivs[i].classList.add("fade");
+      }
+      slideFadeCount++;
+  }
   showSlides(slideIndex += n);
 }
 

@@ -31,64 +31,97 @@
                 <form autocomplete=off action="/admin/episodes/new"
                     method="POST">
                     <div class="form-group">
-                        <label>Episode Number</label>
+                        <label>Episode Number (ex. Episode 21)</label>
                         <input type="text" class="form-control"
                             name="blog[episodeNum]">
                     </div>
                     <div class="form-group">
-                        <label>Title</label>
+                        <label>Title of Post (All important words capitalized)</label>
                         <input type="text" class="form-control"
                             name="blog[title]">
                     </div>
+                    
+                    <p>Slideshow Photos</p>
+                    <p>(right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p>
+                    
                     <div class="form-group">
-                        <label>Image URL</label>
+                        <label>Image 1 URL </label>
                         <input type="text" class="form-control"
                             name="blog[image]">
                     </div>
-                    <!-- <div class="form-group">
-                        <label>Image URL 2</label>
+                    <div class="form-group">
+                        <label>Image 1 Caption </label>
                         <input type="text" class="form-control"
-                            name="blog[image]">
+                            name="blog[caption]">
                     </div>
+
+                    <div id="morePhotos"></div>
+                    <button id="photoBtn" class="btn btn-success mb-5">Add another photo</button>
+
+                    
                     <div class="form-group">
-                        <label>Image URL 3</label>
-                        <input type="text" class="form-control"
-                            name="blog[image]">
-                    </div> -->
-                    <div class="form-group">
-                        <label>Playlist URL</label>
+                        <label>Playlist URL (<a target="_blank" href="https://www.listennotes.com/@thepodwalker/">ListenNotes</a>)
+                            <p>
+                                <ul>
+                                    <li>Search for podcast episode</li>
+                                    <li>Click "save" and create new playlist at bottom</li>
+                                    <li>After adding all podcasts, click "Listen Later" on top right of page</li>
+                                    <li>Click on the playlist</li>
+                                    <li>Click "embed"</li>
+                                    <li>Make sure display order matches order of blog post</li>
+                                    <li>copy html code and paste below</li>
+                                </ul>
+                            </p>
+                        </label>
                         <input type="text" class="form-control"
                             name="blog[playlist]">
                     </div>
                     <div class="form-group">
-                        <label>Post Body</label>
+                        <label>Post Body
+                            <p>
+                                <ul>
+                                    <li>Go to <a target="_blank" href="https://wordhtml.com/">HTML Formatter</a></li>
+                                    <li>Copy text from Microsoft Word doc to 'Word Editor'</li>
+                                    <li>Format spacing</li>
+                                    <li>Click HTML tab</li>
+                                    <li>Copy HTML code and paste below</li>
+                                </ul>
+                            </p>
+                        </label>
                         <textarea name="blog[body]" class="form-control"
                             cols="30" rows="10"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label>Map Image URL</label>
+                        <label>Map Image URL <p>(right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p></label>
                         <input type="text" class="form-control"
                             name="blog[walkImage]">
                     </div>
                     <div class="form-group">
-                        <label>Walk Distance</label>
+                        <label>Walk Distance (ex. 10.2 miles)</label>
                         <input type="text" class="form-control"
                             name="blog[walkDistance]">
                     </div>
                     <div class="form-group">
-                        <label>Walk Steps</label>
+                        <label>Walk Steps (ex. 14,233)</label>
                         <input type="text" class="form-control"
                             name="blog[walkSteps]">
                     </div>
                     <div class="form-group">
-                        <label>Walk Time</label>
+                        <label>Walk Time (ex. 4 hours 23 minutes)</label>
                         <input type="text" class="form-control"
                             name="blog[walkTime]">
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="emailCheck" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Send Email Notifications
+                        </label>
+                      </div>
                     <div class="d-flex justify-content-center">
                         <input class="btn btn-primary mb-5" type="submit" value="Submit">
                     </div>
+                    
                 </form>
             </div>
             <div class="col-md-2"></div>
@@ -107,6 +140,7 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="/javascripts/new.js"></script>
 </body>
 
 </html>

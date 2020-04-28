@@ -42,7 +42,9 @@ router.post("/admin/episodes/new", function (req, res) {
             res.render("new");
         }
         else {
-
+            if(req.body.emailCheck == "on"){
+                console.log("check works");
+            
             Email.find({}, function (err, emailArray) {
                 emailArray.forEach(function (email) {
                     setTimeout(function(){}, 2000);
@@ -55,7 +57,7 @@ router.post("/admin/episodes/new", function (req, res) {
                                 "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
                                 "<div>"+newBlog.episodeNum+"</div>"+ 
                                 "<div><strong>" + newBlog.title + "</strong></div>"+
-                                "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image+"></a></div>"+
+                                "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
                                 "<br><br><br>"+
                                 "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
                     };
@@ -68,7 +70,8 @@ router.post("/admin/episodes/new", function (req, res) {
                     });
                 });
             });
-            // console.log(req.body.blog)
+        }
+            
             res.redirect("/admin/episodes");
         }
     });
