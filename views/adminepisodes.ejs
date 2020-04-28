@@ -31,40 +31,36 @@
             <div class="col-md-12 p-3 rounded-sm">
                 <h3>Episodes</h3>
                 <% blogs.reverse().forEach(function(blog){ %>
-                <class="text-reset text-decoration-none">
-                    <div class="shadow-sm card mb-3 p-md-2 "
-                        style="max-width: 100%;">
-                        <div class="row no-gutters">
-                            <div
-                                class=" img-container col-3 d-flex align-items-center">
-                                <img src="<%=blog.image%>" class="card-img"
-                                    alt="...">
-                            </div>
-                            <div class="col-5 ">
-                                <div class="card-body pb-1 py-md-1">
-                                    <h5 class="card-title episode-title mb-0">
-                                        <%=blog.episodeNum%></h5>
-                                    <p class="card-text mb-0"><%=blog.title%>
-                                    </p>
-                                    <p class=" card-text"><small
-                                            class="text-muted"><%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></small>
-                                    </p>
+                    <a id="episode<%=blog.episodeNum%>" href="/episodes/<%=blog._id %>"
+                        class="text-reset text-decoration-none">
+                        <div class="shadow-sm card mb-3 p-md-2 "
+                            style="max-width: 100%;">
+                            <div class="row no-gutters p-1 p-md-0">
+                                
+                                <div class=" img-container col-4 col-lg-4 ">
+                                   
+                                    <% if (Array.isArray(blog.image)) { %>
+                                        <img src="<%=blog.image[0]%>"
+                                        <%} else { %>
+                                        <img src="<%=blog.image%>"
+                                        <% } %>
+                                    
+                                        class="card-img p-2 p-md-1" alt="Main episode image">
+                                </div>
+                              
+                                <div class="col-8 col-lg-8">
+                                    <div class="card-body pr-0 pl-0 pl-md-2 pb-1 py-md-1">
+                                        <h5 class="card-title episode-title mb-0">
+                                            <%=blog.episodeNum%></h5>
+                                        <p class="card-text mb-0"><%=blog.title%></p>
+                                        <p class="card-date d-none d-sm-block">
+                                            <%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class=" col-4 pt-3">
-                                <form
-                                    action="/admin/episodes/<%=blog._id%>/edit">
-                                    <button class="btn btn-warning mb-2"
-                                        type="submit">Edit</button>
-                                </form>
-                                <form id="delete" method="POST"
-                                    action="/admin/episodes/<%=blog._id%>?_method=DELETE">
-                                    <button
-                                        class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                     <%}); %>
             </div>
         </div>
