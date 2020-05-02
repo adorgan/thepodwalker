@@ -53,7 +53,7 @@ router.get("/episodes/:id", function (req, res) {
             res.redirect("/episodes");
             console.log(err);
         }
-        else {
+        else { 
             if(foundBlog.image.length > 1){
                 res.render("test", { blog: foundBlog });
             }
