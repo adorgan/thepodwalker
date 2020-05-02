@@ -68,7 +68,7 @@ router.get("/episodes/:id", function (req, res) {
 router.get("/playlists", function (req, res) {
     Blog.find({}, function (err, blogs) {
         if (err) {
-            console.log("Error");
+            console.log("Error"); 
         } else {
             res.render("playlists", { blogs: blogs });
         }
