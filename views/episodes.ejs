@@ -67,12 +67,12 @@
                                 <div class=" img-container col-4 col-lg-4 ">
                                    
                                     <% if (Array.isArray(blog.image)) { %>
-                                        <img src="<%=blog.image[0]%>"
+                                        <img src="<%=blog.image[0]%>" class="card-img p-2 p-md-1" alt="Main episode image">
                                         <%} else { %>
-                                        <img src="<%=blog.image%>"
+                                        <img src="<%=blog.image%>" class="card-img p-2 p-md-1" alt="Main episode image">
                                         <% } %>
                                     
-                                        class="card-img p-2 p-md-1" alt="Main episode image">
+                                        
                                 </div>
                               
                                 <div class="col-8 col-lg-8">

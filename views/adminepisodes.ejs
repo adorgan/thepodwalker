@@ -37,8 +37,11 @@
                         <div class="row no-gutters">
                             <div
                                 class=" img-container col-3 d-flex align-items-center">
-                                <img src="<%=blog.image%>" class="card-img"
-                                    alt="...">
+                                <% if (Array.isArray(blog.image)) { %>
+                                    <img src="<%=blog.image[0]%>" class="card-img p-2 p-md-1" alt="Main episode image">
+                                    <%} else { %>
+                                    <img src="<%=blog.image%>" class="card-img p-2 p-md-1" alt="Main episode image">
+                                    <% } %>
                             </div>
                             <div class="col-5 ">
                                 <div class="card-body pb-1 py-md-1">
@@ -57,11 +60,12 @@
                                     <button class="btn btn-warning mb-2"
                                         type="submit">Edit</button>
                                 </form>
-                                <form id="delete" method="POST"
-                                    action="/admin/episodes/<%=blog._id%>?_method=DELETE">
-                                    <button
-                                        class="btn btn-danger">Delete</button>
-                                </form>
+                                <!-- <form id="<%=blog._id%>"  method="POST"
+                                    action="/admin/episodes/<%=blog._id%>?_method=DELETE"> -->
+                                    <button id="<%=blog._id%>"
+                                        class="btn btn-danger delete">Delete</button>
+                                <!-- </form> -->
+                                
                             </div>
                         </div>
                     </div>
@@ -81,6 +85,31 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script>
+        var btnDel = document.getElementsByClassName("delete");
+        console.log(btnDel[0].id)
+        
+        for(var i = 0; i<btnDel.length; i++){
+            var btnID = btnDel[i].id;
+            btnDel[i].addEventListener("click", function(event){
+            
+            var confirmed = confirm("Are you sure you want to delete?");
+            if(confirmed){
+                $.ajax({
+                    url: "/admin/episodes/" + btnID + "?_method=DELETE",
+                    type: "POST",
+                    data: {
+                        blogID: btnID
+                    },
+                    success: (function(result){
+
+                    })
+                });
+            }
+        })
+        }
+        
+    </script>
 </body>
 
 </html>

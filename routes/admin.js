@@ -4,6 +4,7 @@ var passport = require("passport");
 var Blog = require("../models/blogpost");
 var Email = require("../models/email");
 var transporter = require("./mailer");
+var Blogpost = require("../models/blog");
 
 //Show admin login page
 router.get("/admin/login", function (req, res) {
@@ -37,40 +38,40 @@ router.get("/admin/episodes/new", isLoggedIn, function (req, res) {
 
 //update database with new episode, send mailer to email list
 router.post("/admin/episodes/new", function (req, res) {
-    Blog.create(req.body.blog, function (err, newBlog) {
+    Blogpost.create(req.body.blog, function (err, newBlog) {
         if (err) {
             res.render("new");
         }
         else {
-            if(req.body.emailCheck == "on"){
-                console.log("check works");
+        //     if(req.body.emailCheck == "on"){
+        //         console.log("check works");
             
-            Email.find({}, function (err, emailArray) {
-                emailArray.forEach(function (email) {
-                    setTimeout(function(){}, 2000);
-                    var mailOptions = {
-                        from: 'thepodwalker@gmail.com',
-                        to: email.email,
-                        subject: 'New Pod Walker Episode',
-                        html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
-                                "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
-                                "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
-                                "<div>"+newBlog.episodeNum+"</div>"+ 
-                                "<div><strong>" + newBlog.title + "</strong></div>"+
-                                "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
-                                "<br><br><br>"+
-                                "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
-                    };
-                    transporter.sendMail(mailOptions, function (error, info) {
-                        if (error) {
-                            console.log(error);
-                        } else {
-                            console.log('Email sent: ' + info.response);
-                        }
-                    });
-                });
-            });
-        }
+        //     Email.find({}, function (err, emailArray) {
+        //         emailArray.forEach(function (email) {
+        //             setTimeout(function(){}, 2000);
+        //             var mailOptions = {
+        //                 from: 'thepodwalker@gmail.com',
+        //                 to: email.email,
+        //                 subject: 'New Pod Walker Episode',
+        //                 html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
+        //                         "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
+        //                         "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
+        //                         "<div>"+newBlog.episodeNum+"</div>"+ 
+        //                         "<div><strong>" + newBlog.title + "</strong></div>"+
+        //                         "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
+        //                         "<br><br><br>"+
+        //                         "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
+        //             };
+        //             transporter.sendMail(mailOptions, function (error, info) {
+        //                 if (error) {
+        //                     console.log(error);
+        //                 } else {
+        //                     console.log('Email sent: ' + info.response);
+        //                 }
+        //             });
+        //         });
+        //     });
+        // }
             
             res.redirect("/admin/episodes");
         }
@@ -84,7 +85,13 @@ router.get("/admin/episodes/:id/edit", isLoggedIn, function (req, res) {
             res.redirect("/admin/episodes");
         }
         else {
-            res.render("edit", { blog: foundBlog });
+            if(foundBlog.image.length > 1){
+                res.render("edit2", { blog: foundBlog });
+            }
+            else{
+                res.render("edit", { blog: foundBlog });
+            }
+            
         }
     });
 });
@@ -103,15 +110,16 @@ router.put("/admin/episodes/:id", isLoggedIn, function (req, res) {
 
 //delete blog entry from database
 router.delete("/admin/episodes/:id", isLoggedIn, function (req, res) {
-    
-    Blog.findByIdAndRemove(req.params.id, function (err) {
-        if (err) {
-            res.redirect("/admin/episodes/");
-        }
-        else {
-            res.redirect("/admin/episodes/");
-        }
-    });
+    console.log(req.params.id);
+
+    // Blog.findByIdAndRemove(req.params.id, function (err) {
+    //     if (err) {
+    //         res.redirect("/admin/episodes/");
+    //     }
+    //     else {
+    //         res.redirect("/admin/episodes/");
+    //     }
+    // });
 });
 
 //middleware for ensuring user is logged in
