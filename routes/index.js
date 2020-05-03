@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Blog = require("../models/blogpost");
+var Blogpost = require("../models/blog");
 
 
 //show home page
@@ -77,7 +78,7 @@ router.get("/playlists", function (req, res) {
 
 //show about page
 router.get("/about", function (req, res) {
-    Blog.find({}, function (err, blogs) {
+    Blogpost.find({}, function (err, blogs) {
         if (err) {
             console.log("Error");
         } else {
