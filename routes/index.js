@@ -41,7 +41,7 @@ router.get("/episodes", function (req, res) {
         if (err) {
             console.log("Error");
         } else {
-            console.log(blogs);
+            
             res.render("episodes", { blogs: blogs });
         }
     })
