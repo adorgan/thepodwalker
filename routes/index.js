@@ -6,12 +6,12 @@ var Blogpost = require("../models/blog");
 
 //show home page
 router.get("/", function (req, res) {
-    Blog.find({}, function (err, blogs) {
+    Blog.find({}, null, {sort: 'created'}, function (err, blogs) {
         if (err) {
             console.log("Error");
         } else {
             var blogLength = blogs.length;
-            var newBLogs = blogs.slice(blogLength-6, blogLength);
+            var newBLogs = blogs.slice(blogLength-6, blogLength).reverse();
             res.render("index", { blogs: newBLogs });
         }
     });
@@ -19,7 +19,7 @@ router.get("/", function (req, res) {
 
 //load more episodes
 router.get("/loadEpisodes", function (req, res) {
-    Blog.find({}, function (err, blogs) {
+    Blog.find({}, null, {sort: 'created'}, function (err, blogs) {
         if (err) {
             console.log("Error");
         } else {
@@ -37,10 +37,11 @@ router.get("/loadEpisodes", function (req, res) {
 
 //show episodes page
 router.get("/episodes", function (req, res) {
-    Blog.find({}, function (err, blogs) {
+    Blog.find({}, null, {sort: '-created'}, function (err, blogs) {
         if (err) {
             console.log("Error");
         } else {
+            console.log(blogs);
             res.render("episodes", { blogs: blogs });
         }
     })
@@ -51,7 +52,7 @@ router.get("/episodes", function (req, res) {
 router.get("/episodes/:id", function (req, res) {
     Blog.findById(req.params.id, function (err, foundBlog) {
         if (err) {
-            res.redirect("/episodes");
+            res.redirect("/");
             console.log(err);
         }
         else { 
@@ -67,7 +68,7 @@ router.get("/episodes/:id", function (req, res) {
 
 //show playlists page
 router.get("/playlists", function (req, res) {
-    Blog.find({}, function (err, blogs) {
+    Blog.find({}, null, {sort: 'created'}, function (err, blogs) {
         if (err) {
             console.log("Error"); 
         } else {
