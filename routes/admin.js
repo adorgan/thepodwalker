@@ -4,7 +4,7 @@ var passport = require("passport");
 var Blog = require("../models/blogpost");
 var Email = require("../models/email");
 var transporter = require("./mailer");
-var Blogpost = require("../models/blog");
+var Email = require("../models/email");
 
 //Show admin login page
 router.get("/admin/login", function (req, res) {
@@ -22,13 +22,38 @@ router.post("/admin/login", passport.authenticate("local", {
 
 //Show admin console with all episodes
 router.get("/admin/episodes", isLoggedIn, function (req, res) {
-    Blog.find({}, function (err, blogs) {
-        if (err) {
-            console.log("Error");
-        } else {
-            res.render("adminepisodes", { blogs: blogs });
-        }
-    })
+
+    var context = [];
+
+    const blogs = new Promise((resolve, reject) => {
+        Blog.find({}, null, {sort: 'created'}, function (err, blogs) {
+            if (err) {
+                console.log("Error");
+            } else {
+                // res.render("adminepisodes", { blogs: blogs });
+                context.blogs = blogs;
+                resolve();
+            }
+        });
+    });
+
+    const email = new Promise((resolve, reject) => {
+        Email.find({}, function(err, email){
+            if(err){
+                console.log(error);
+            }
+            else{
+                context.email = email.length;
+                resolve();
+            }
+        });
+    });
+
+    Promise.all([blogs, email]).then((values) => {
+        res.render('adminepisodes', context);
+    });
+
+    
 });
 
 //show new blog post page
