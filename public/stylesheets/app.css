@@ -17,6 +17,14 @@ a:hover{
     text-decoration: none;
 }
 
+hr{
+    background: #4c6bb4;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .navbar{
     background: #0E3386;
 }
@@ -27,6 +35,11 @@ a:hover{
 
 .navbar-brand{
     font-size: 24px;
+}
+
+#header-totals{
+    color: #CC3433;
+    font-size: 18px;
 }
 
 .header{
@@ -82,6 +95,14 @@ a:hover{
     border: none;
     padding: 8px;
     background-color: rgb(249, 249, 250)
+}
+
+.carousel-control-prev-icon{
+    margin-left: 14px;
+}
+
+.carousel-control-next-icon{
+    margin-right: 14px;
 }
 
 .card li{
@@ -159,6 +180,11 @@ a:hover{
     cursor: pointer;
 }
 
+.fa-chart-bar, .fa-tshirt{
+    color: #3B5998;
+    font-size: 28px;
+}
+
 #footer{
     height: 60px;
     background: #0E3386;
@@ -225,16 +251,26 @@ a:hover{
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 2s;
+	animation-duration: 1s;
 }
 
 @keyframes fadeInOpacity {
 	0% {
-		opacity: 0;
+		opacity: .5;
 	}
 	100% {
 		opacity: 1;
 	}
+}
+
+/* pod stats sidebar */
+.pod-stats-title{
+    font-size: 18px;
+    color: #CC3433;
+}
+
+.pod-stats-category{
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {
@@ -258,5 +294,10 @@ a:hover{
 
     .subscribe-container{
         width: 100%;
+    }
+
+    hr{
+        margin-left: 4rem;
+        margin-right: 4rem;
     }
 }

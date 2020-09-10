@@ -147,12 +147,12 @@
                 <h3>Today's Walk</h3>
                 <div class="mb-3 shadow-sm">
                     <div class="card p-2 " style="width: 100%;">
-                        <img src="<%=blog.walkImage%>" class="card-img-top" alt="">
+                        <img src="<%=blog.walkImage%>" class="card-img-top" alt="Main article image">
                         <div class="card-body card-text p-2">
                             <ul>
-                                <li>Distance: <%=blog.walkDistance%></li>
-                                <li>Steps: <%=blog.walkSteps%></li>
-                                <li>Time: <%=blog.walkTime%></li>
+                                <li>Distance: <%=blog.walkDistance%> miles</li>
+                                <li>Steps: <%=blog.walkSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");%></li>
+                                <li>Time: <%=blog.walkTimeHrs%> hours <%=blog.walkTimeMins%> minutes</li>
                             </ul>
                         </div>
                     </div>

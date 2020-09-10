@@ -19,6 +19,7 @@ loadBtn.addEventListener("click", function(){
             var divEp = document.getElementById("loadedEpisodes");
             var divNew = document.createElement("div");
             divNew.innerHTML = result;
+            divNew.className = "fade-in";
             //add new episodes to list
             divEp.appendChild(divNew);
             
