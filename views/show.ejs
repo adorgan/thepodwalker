@@ -144,9 +144,9 @@
                         <img src="<%=blog.walkImage%>" class="card-img-top" alt="Main article image">
                         <div class="card-body card-text p-2">
                             <ul>
-                                <li>Distance: <%=blog.walkDistance%></li>
-                                <li>Steps: <%=blog.walkSteps%></li>
-                                <li>Time: <%=blog.walkTime%></li>
+                                <li>Distance: <%=blog.walkDistance%> miles</li>
+                                <li>Steps: <%=blog.walkSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");%></li>
+                                <li>Time: <%=blog.walkTimeHrs%> hours <%=blog.walkTimeMins%> minutes</li>
                             </ul>
                         </div>
                     </div>
