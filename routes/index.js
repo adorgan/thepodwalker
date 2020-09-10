@@ -88,41 +88,50 @@ router.get("/episodes/:id", function (req, res) {
         else { 
             
             //increment page view counter in db
-            if(foundBlog.views != undefined){
-                var numViews = foundBlog.views;
-                numViews++;
-                Blog.updateOne({ _id: req.params.id}, { views: numViews}, function(err){
-                    if(err){
-                        console.log(err);
-                    }
-                    else{
-                        if(foundBlog.image.length > 1){
+            // if(foundBlog.views != undefined){
+            //     var numViews = foundBlog.views;
+            //     numViews++;
+            //     Blog.updateOne({ _id: req.params.id}, { views: numViews}, function(err){
+            //         if(err){
+            //             console.log(err);
+            //         }
+            //         else{
+            //             console.log(foundBlog.image);
+            //             if(foundBlog.image.length > 1){
                 
-                            res.render("test", { blog: foundBlog });
-                        }
-                        else{
-                            res.render("show", { blog: foundBlog });
+            //                 res.render("test", { blog: foundBlog });
+            //             }
+            //             else{
+            //                 res.render("show", { blog: foundBlog });
                             
-                        }
-                    }
-                });
+            //             }
+            //         }
+            //     });
+            // }
+            // else{
+            //     Blog.updateOne({ _id: req.params.id}, { views: 1}, function(err){
+            //         if(err){
+            //             console.log(err);
+            //         }
+            //         else{
+            //             if(foundBlog.image.length > 1){
+                
+            //                 res.render("test", { blog: foundBlog });
+            //             }
+            //             else{
+            //                 res.render("show", { blog: foundBlog });
+                            
+            //             }
+            //         }
+            //     });
+            // }
+            if(foundBlog.image.length > 1){
+                
+                res.render("test", { blog: foundBlog });
             }
             else{
-                Blog.updateOne({ _id: req.params.id}, { views: 1}, function(err){
-                    if(err){
-                        console.log(err);
-                    }
-                    else{
-                        if(foundBlog.image.length > 1){
+                res.render("show", { blog: foundBlog });
                 
-                            res.render("test", { blog: foundBlog });
-                        }
-                        else{
-                            res.render("show", { blog: foundBlog });
-                            
-                        }
-                    }
-                });
             }
             
         }
