@@ -95,6 +95,16 @@ router.get("/episodes/:id", function (req, res) {
                     if(err){
                         console.log(err);
                     }
+                    else{
+                        if(foundBlog.image.length > 1){
+                
+                            res.render("test", { blog: foundBlog });
+                        }
+                        else{
+                            res.render("show", { blog: foundBlog });
+                            
+                        }
+                    }
                 });
             }
             else{
@@ -102,17 +112,17 @@ router.get("/episodes/:id", function (req, res) {
                     if(err){
                         console.log(err);
                     }
+                    else{
+                        if(foundBlog.image.length > 1){
+                
+                            res.render("test", { blog: foundBlog });
+                        }
+                        else{
+                            res.render("show", { blog: foundBlog });
+                            
+                        }
+                    }
                 });
-            }
-            
-
-            if(foundBlog.image.length > 1){
-                
-                res.render("test", { blog: foundBlog });
-            }
-            else{
-                res.render("show", { blog: foundBlog });
-                
             }
             
         }
