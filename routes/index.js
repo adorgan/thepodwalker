@@ -125,14 +125,7 @@ router.get("/episodes/:id", function (req, res) {
                     }
                 });
             }
-            // if(foundBlog.image.length > 1){
-                
-            //     res.render("test", { blog: foundBlog });
-            // }
-            // else{
-            //     res.render("show", { blog: foundBlog });
-                
-            // }
+         
             
         }
     });
