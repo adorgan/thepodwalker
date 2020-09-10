@@ -10,9 +10,39 @@ router.get("/", function (req, res) {
         if (err) {
             console.log("Error");
         } else {
+        
+        var runningTotals;
+        Blog.aggregate([
+                { $group: {
+                    _id: null,
+                    totalPodcasts:{ $sum: "$podcasts" },
+                    totalWalkDistance: { $sum: "$walkDistance" },
+                    totalSteps: { $sum: "$walkSteps" },
+                    totalWalkMins: { $sum: "$walkTimeMins" },
+                    totalWalkHrs: { $sum: "$walkTimeHrs" }
+                }}
+        ]).then(function(result){
+            
+            runningTotals = result;
+          
             var blogLength = blogs.length;
             var newBLogs = blogs.slice(blogLength-6, blogLength).reverse();
-            res.render("index", { blogs: newBLogs });
+
+            var totalMins = (result[0].totalWalkHrs * 60) + result[0].totalWalkMins;
+            runningTotals[0].totalWalkHrs = Math.floor(totalMins / 60);
+            if(totalMins % 60 < 10){
+                runningTotals[0].totalWalkMins = '0' + totalMins % 60;
+            }
+            else{
+                runningTotals[0].totalWalkMins = totalMins % 60;
+            }
+            
+            
+            res.render("index", { blogs: newBLogs,
+                                totals: runningTotals});
+        });
+        
+            
         }
     });
 });
@@ -56,12 +86,54 @@ router.get("/episodes/:id", function (req, res) {
             console.log(err);
         }
         else { 
-            if(foundBlog.image.length > 1){
-                res.render("test", { blog: foundBlog });
+            
+            // increment page view counter in db
+            if(foundBlog.views != undefined){
+                var numViews = foundBlog.views;
+                numViews++;
+                Blog.updateOne({ _id: req.params.id}, { views: numViews}, function(err){
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                        console.log(foundBlog.image);
+                        if(foundBlog.image.length > 1){
+                
+                            res.render("test", { blog: foundBlog });
+                        }
+                        else{
+                            res.render("show", { blog: foundBlog });
+                            
+                        }
+                    }
+                });
             }
             else{
-                res.render("show", { blog: foundBlog });
+                Blog.updateOne({ _id: req.params.id}, { views: 1}, function(err){
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                        if(foundBlog.image.length > 1){
+                
+                            res.render("test", { blog: foundBlog });
+                        }
+                        else{
+                            res.render("show", { blog: foundBlog });
+                            
+                        }
+                    }
+                });
             }
+            // if(foundBlog.image.length > 1){
+                
+            //     res.render("test", { blog: foundBlog });
+            // }
+            // else{
+            //     res.render("show", { blog: foundBlog });
+                
+            // }
+            
         }
     });
 });

@@ -2,8 +2,9 @@
 
 <!-- Main content with recent episodes -->
 <div class="container">
+    
     <div class="row ">
-        <div class="col-lg-8  col-sm-12 p-3 rounded-sm">
+        <div class="col-lg-9  col-sm-12 p-3 rounded-sm">
             <h3>Latest Episodes</h3>
             <% blogs.forEach(function(blog){ %>
             <a id="episode<%=blog.episodeNum%>" href="/episodes/<%=blog._id %>"
@@ -20,6 +21,7 @@
                                 <img src="<%=blog.image%>"
                                 <% } %>
                             
+                                
                                 class="card-img p-2 p-md-1" alt="Main episode image">
                         </div>
                       
@@ -47,7 +49,7 @@
         </div>
 
         <!-- Side bar walk-map carousel -->
-        <div class="col-lg-4 col-lg-4 col-sm-12 p-3">
+        <div class="col-lg-3 col-sm-12 p-3">
             <h3>Recent Walks</h3>
             <div class="card mb-3 shadow-sm ">
                 <div class="row no-gutters p-0 ">
@@ -55,17 +57,21 @@
                         data-ride="carousel">
                         <div class="carousel-inner ">
                             <div class="carousel-item active">
-                                <div class="p-2" style="width: 100%;">
+                                <div class="p-3" style="width: 100%;">
                                     <h5> <%=blogs[0].episodeNum%></h5>
                                     <img src="<%=blogs[0].walkImage%>"
                                         class="card-img-top" alt="Map of walk">
                                     <div class="card-body card-text p-2">
                                         <ul>
                                             <li>Distance:
-                                                <%=blogs[0].walkDistance%></li>
-                                            <li>Steps: <%=blogs[0].walkSteps%>
+                                                <%=blogs[0].walkDistance%> miles</li>
+                                            <li>Steps: <%=blogs[0].walkSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
                                             </li>
-                                            <li>Time: <%=blogs[0].walkTime%>
+                                            <% if (blogs[0].walkTimeMins < 10) { %>
+                                                <li>Time: <%=blogs[0].walkTimeHrs%>:0<%=blogs[0].walkTimeMins%>
+                                            <% } else{ %>
+                                                <li>Time: <%=blogs[0].walkTimeHrs%>:<%=blogs[0].walkTimeMins%>
+                                            <% } %>
                                             </li>
                                         </ul>
                                     </div>
@@ -73,16 +79,22 @@
                             </div>
                             <% blogs.slice(1, 3).forEach(function(blog){ %>
                             <div class="carousel-item">
-                                <div class=" p-2 " style="width: 100%;">
+                                <div class=" p-3 " style="width: 100%;">
                                     <h5> <%=blog.episodeNum%></h5>
                                     <img src="<%=blog.walkImage%>"
                                         class="card-img-top" alt="Map of walk">
                                     <div class="card-body card-text p-2">
                                         <ul>
-                                            <li>Distance: <%=blog.walkDistance%>
+                                            <li>Distance:
+                                                <%=blog.walkDistance%> miles</li>
+                                            <li>Steps: <%=blog.walkSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
                                             </li>
-                                            <li>Steps: <%=blog.walkSteps%></li>
-                                            <li>Time: <%=blog.walkTime%></li>
+                                            <% if (blog.walkTimeMins < 10) { %>
+                                                <li>Time: <%=blog.walkTimeHrs%>:0<%=blog.walkTimeMins%>
+                                            <% } else{ %>
+                                                <li>Time: <%=blog.walkTimeHrs%>:<%=blog.walkTimeMins%>
+                                            <% } %>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -107,16 +119,45 @@
                 </div>
             </div>
 
-            <!-- Side bar gear  -->
-            <h3>Gear</h3>
-            <div class="card p-2 p-md-3 shadow-sm" style="width: 100%;">
-                <img src="images/gear.jpg" class="card-img-top" alt="Camera gear">
-                <div
-                    class="image_citation px-2 pb-2 d-flex justify-content-end">
-                    <em>unsplash.com</em>
+            <h3 class="mb-0"><i class="far fa-chart-bar"></i> Pod Stats </h3>
+            <div class="card mb-3 shadow-sm d-flex justify-content-center" style="width: 100%;">
+                
+                <div class="card-body p-3 text-center">
+                    <h5 class="pod-stats-title">
+                        2020
+                    </h5>
+                    <div class="">
+                        <div>
+                            <div class="pod-stats-category">Distance Walked</div> 
+                            <div><%= totals[0].totalWalkDistance %> miles</div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="pod-stats-category">Steps Taken</div> 
+                            <div><%= totals[0].totalSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="pod-stats-category">Time Walked</div> 
+                            <div> <%= totals[0].totalWalkHrs %>:<%= totals[0].totalWalkMins %> 
+                                    (<%= (totals[0].totalWalkHrs / 24).toFixed(1) %> days)
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="pod-stats-category">Podcasts Listened To </div> 
+                            <div><%= totals[0].totalPodcasts %> </div>
+                        </div>
+                        
+                    </div>
                 </div>
+            </div>
+
+            <!-- Side bar gear  -->
+            <h3 class="mb-1"><i class="fas fa-tshirt"></i> Pod Gear </h3>
+            <div class="card p-3 shadow-sm" style="width: 100%;">
+                
                 <div class="card-body p-0">
-                    <h5 class="card-title">Podwalker Gear List</h5>
                     <ul>
                         <li>Shoes: Hoka One One</li>
                         <li>Phone: iPhone 11 Max</li>
