@@ -10,6 +10,13 @@ router.get("/", function (req, res) {
         if (err) {
             console.log("Error");
         } else {
+
+        res.cookie('foo', 'bar', {
+            sameSite: "none",
+            secure: true
+        });
+        
+        
         
         var runningTotals;
         Blog.aggregate([
@@ -96,7 +103,7 @@ router.get("/episodes/:id", function (req, res) {
                         console.log(err);
                     }
                     else{
-                        console.log(foundBlog.image);
+                        
                         if(foundBlog.image.length > 1){
                 
                             res.render("test", { blog: foundBlog });
@@ -137,7 +144,12 @@ router.get("/playlists", function (req, res) {
         if (err) {
             console.log("Error"); 
         } else {
-            res.render("playlists", { blogs: blogs });
+            res.cookie('foo', 'bar', {
+                sameSite: "none",
+                secure: true
+            });
+
+            res.render("playlists", { blogs: blogs.slice(0,7) });
         }
     });
 });
