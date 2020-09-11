@@ -149,7 +149,7 @@ router.get("/playlists", function (req, res) {
                 secure: true
             });
 
-            res.render("playlists", { blogs: blogs.slice(0,7) });
+            res.render("playlists", { blogs: blogs });
         }
     });
 });
