@@ -63,7 +63,9 @@ router.get("/admin/episodes/new", isLoggedIn, function (req, res) {
 
 //update database with new episode, send mailer to email list
 router.post("/admin/episodes/new", function (req, res) {
-    console.log(req.body.blog);
+    
+    // req.body.blog.mainImg = req.body.blog.image[0];
+    // console.log(req.body.blog);
     Blog.create(req.body.blog, function (err, newBlog) {
         if (err) {
             res.render("new");
@@ -101,6 +103,7 @@ router.post("/admin/episodes/new", function (req, res) {
             res.redirect("/admin/episodes");
         }
     });
+    // res.redirect("/admin/episodes");
 });
 
 //Show admin episode edit page
