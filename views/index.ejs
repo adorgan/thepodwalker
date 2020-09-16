@@ -16,10 +16,14 @@
                         <div class=" img-container col-4 col-lg-4 ">
                            
                             <% if (Array.isArray(blog.image)) { %>
-                                <img src="<%=blog.image[0]%>"
+                                <% if (blog.image[0].startsWith("uploaded")) { %>
+                                    <img src="/images/<%=blog.image[0]%>"
                                 <%} else { %>
-                                <img src="<%=blog.image%>"
+                                    <img src="<%=blog.image[0]%>"
                                 <% } %>
+                            <%} else { %>
+                                <img src="<%=blog.image%>"
+                            <% } %>
                             
                                 
                                 class="card-img p-2 p-md-1" alt="Main episode image">
@@ -59,7 +63,12 @@
                             <div class="carousel-item active">
                                 <div class="p-3" style="width: 100%;">
                                     <h5> <%=blogs[0].episodeNum%></h5>
-                                    <img src="<%=blogs[0].walkImage%>"
+                                    <% if (blogs[0].walkImage.startsWith("uploaded")) { %>
+                                        <img src="/images/<%=blogs[0].walkImage%>"
+                                    <%} else { %>
+                                        <img src="<%=blogs[0].walkImage%>"
+                                    <% } %>
+                                    
                                         class="card-img-top" alt="Map of walk">
                                     <div class="card-body card-text p-2">
                                         <ul>

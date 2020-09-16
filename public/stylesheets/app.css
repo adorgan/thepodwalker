@@ -25,6 +25,10 @@ hr{
     margin-bottom: 5px;
 }
 
+label{
+    font-weight: bold;
+}
+
 .navbar{
     background: #0E3386;
 }
@@ -272,6 +276,8 @@ hr{
 .pod-stats-category{
     font-weight: bold;
 }
+
+
 
 @media only screen and (max-width: 600px) {
     

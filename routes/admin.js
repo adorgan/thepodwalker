@@ -6,6 +6,19 @@ var Email = require("../models/email");
 var transporter = require("./mailer");
 var Email = require("../models/email");
 
+var multer = require("multer");
+var path = require('path')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/images/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, "uploaded" + Date.now() + path.extname(file.originalname)) //Appending extension
+    }
+  })
+  
+  var upload = multer({ storage: storage });
+
 //Show admin login page
 router.get("/admin/login", function (req, res) {
     res.render("adminlogin");
@@ -62,10 +75,17 @@ router.get("/admin/episodes/new", isLoggedIn, function (req, res) {
 });
 
 //update database with new episode, send mailer to email list
-router.post("/admin/episodes/new", function (req, res) {
+router.post("/admin/episodes/new", upload.array("blog[image]"), function (req, res) {
     
     // req.body.blog.mainImg = req.body.blog.image[0];
-    // console.log(req.body.blog);
+    console.log(req.body.blog);
+    console.log(req.files);
+    var imgArray = [];
+    req.files.forEach(function(file){
+        imgArray.push(file.filename);
+    })
+    console.log(imgArray);
+    req.body.blog.image = imgArray;
     Blog.create(req.body.blog, function (err, newBlog) {
         if (err) {
             res.render("new");
@@ -73,31 +93,31 @@ router.post("/admin/episodes/new", function (req, res) {
         else {
             if(req.body.emailCheck == "on"){
             
-                Email.find({}, function (err, emailArray) {
-                    emailArray.forEach(function (email) {
-                        setTimeout(function(){}, 2000);
-                        var mailOptions = {
-                            from: 'thepodwalker@gmail.com',
-                            to: email.email,
-                            subject: 'New Pod Walker Episode',
-                            html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
-                                    "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
-                                    "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
-                                    "<div>"+newBlog.episodeNum+"</div>"+ 
-                                    "<div><strong>" + newBlog.title + "</strong></div>"+
-                                    "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
-                                    "<br><br><br>"+
-                                    "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
-                        };
-                        transporter.sendMail(mailOptions, function (error, info) {
-                            if (error) {
-                                console.log(error);
-                            } else {
-                                console.log('Email sent: ' + info.response);
-                            }
-                        });
-                    });
-                });
+                // Email.find({}, function (err, emailArray) {
+                //     emailArray.forEach(function (email) {
+                //         setTimeout(function(){}, 2000);
+                //         var mailOptions = {
+                //             from: 'thepodwalker@gmail.com',
+                //             to: email.email,
+                //             subject: 'New Pod Walker Episode',
+                //             html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
+                //                     "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
+                //                     "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
+                //                     "<div>"+newBlog.episodeNum+"</div>"+ 
+                //                     "<div><strong>" + newBlog.title + "</strong></div>"+
+                //                     "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
+                //                     "<br><br><br>"+
+                //                     "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
+                //         };
+                //         transporter.sendMail(mailOptions, function (error, info) {
+                //             if (error) {
+                //                 console.log(error);
+                //             } else {
+                //                 console.log('Email sent: ' + info.response);
+                //             }
+                //         });
+                //     });
+                // });
             }
             
             res.redirect("/admin/episodes");

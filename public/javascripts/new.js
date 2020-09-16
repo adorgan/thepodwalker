@@ -1,4 +1,3 @@
-
 var btnPhotos = document.getElementById("photoBtn");
 
 var div = document.getElementById("morePhotos");
@@ -12,10 +11,10 @@ btnPhotos.addEventListener("click", function(event){
     var parentDiv = document.createElement("div");
     parentDiv.classList.add("form-group");
     var photoLabel = document.createElement("label");
-    photoLabel.innerHTML = "Image " + count + " URL";
+    photoLabel.innerHTML = "Image " + count;
     var photoInput = document.createElement("input");
-    photoInput.setAttribute("type", "text");
-    photoInput.classList.add("form-control");
+    photoInput.setAttribute("type", "file");
+    photoLabel.classList.add("pr-2");
     photoInput.name = "blog[image]";
     
     parentDiv.appendChild(photoLabel);
@@ -40,29 +39,3 @@ btnPhotos.addEventListener("click", function(event){
     count++;
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// <div class="form-group">
-//                         <label>Image 2 URL </label>
-//                         <input type="text" class="form-control"
-//                             name="blog[image]">
-//                     </div>
-//                     <div class="form-group">
-//                         <label>Image 2 Caption </label>
-//                         <input type="text" class="form-control"
-//                             name="blog[caption]">
-//                     </div>

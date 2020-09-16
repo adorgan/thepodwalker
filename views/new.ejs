@@ -7,6 +7,7 @@
     <meta name="description" content="Admin Edit Page">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/images/favicon.ico" type="image/png">
+    <script src="https://cdn.tiny.cloud/1/0oa0740ei9fixzv66q2hnh3j82qqein1e6rcvaifsubm5fmh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap"
         rel="stylesheet">
@@ -22,38 +23,46 @@
 <body>
 <!-- new episode form -->
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 d-flex justify-content-center pt-3">
                 <h2>Add Blog Post</h2>
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            
+            <div class="col-10">
                 <form autocomplete=off action="/admin/episodes/new"
-                    method="POST">
-                    <div class="form-group">
-                        <label>Episode Number (ex. Episode 21)</label>
-                        <input type="text" class="form-control"
-                            name="blog[episodeNum]">
+                    method="POST" enctype="multipart/form-data">
+                    <div class="class form-row">
+                        <div class="form-group col-3">
+                            <label>Episode Number</label>
+                            <input type="text" class="form-control form-small"
+                                placeholder="ex. Episode 21" name="blog[episodeNum]">
+                        </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label>Title of Post (All important words capitalized)</label>
+                        <label>Episode Title</label>
                         <input type="text" class="form-control"
-                            name="blog[title]">
+                            placeholder="Capitalize All Important Words in Title" name="blog[title]">
                     </div>
 
-                    <p>Hero Image</p>
-                    <div class="form-group">
+                    <!-- <p>Hero Image</p> -->
+                    <!-- <div class="form-group">
                         <label>Hero Image URL </label>
                         <input type="text" class="form-control"
                             name="blog[mainImg]">
-                    </div>
+                    </div> -->
                     
-                    <p>Slideshow Photos</p>
-                    <p>(right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p>
+                    <h4>Slideshow Photos</h4>
+                    <!-- <p>(right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p> -->
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Image 1 URL </label>
                         <input type="text" class="form-control"
+                            name="blog[image]">
+                    </div> -->
+                    <div class="form-group">
+                        <label class="pr-2">Image 1</label>
+                        <input type="file" class=""
                             name="blog[image]">
                     </div>
                     <div class="form-group">
@@ -82,50 +91,49 @@
                         <input type="text" class="form-control"
                             name="blog[playlist]">
                     </div>
-                    <div class="form-group">
-                        <label>Number of Podcasts </label>
-                        <input type="number" class="form-control"
-                            name="blog[podcasts]">
+                    <div class="form-row">
+                        <div class="form-group col-2">
+                            <label>Number of Podcasts</label>
+                            <input type="number" class="form-control"
+                                name="blog[podcasts]">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Post Body
-                            <p>
-                                <ul>
-                                    <li>Go to <a target="_blank" href="https://wordhtml.com/">HTML Formatter</a></li>
-                                    <li>Copy text from Microsoft Word doc to 'Word Editor'</li>
-                                    <li>Format spacing</li>
-                                    <li>Click HTML tab</li>
-                                    <li>Copy HTML code and paste below</li>
-                                </ul>
-                            </p>
-                        </label>
-                        <textarea name="blog[body]" class="form-control"
-                            cols="30" rows="10"></textarea>
+                    
+                    <div class="form-group pb-4">
+                        <label>Episode Blog Post Text</label>
+                        <textarea id="mytextarea" name="blog[body]" class="form-control"
+                            cols="30" rows="10"></textarea>                     
                     </div>
 
                     <div class="form-group">
-                        <label>Map Image URL <p>(right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p></label>
-                        <input type="text" class="form-control"
+                        <label>Map Image <p>
+                            <!-- (right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p></label> -->
+                        <input type="file" class=""
                             name="blog[walkImage]">
                     </div>
-                    <div class="form-group">
-                        <label>Walk Distance (ex. 10.2)</label>
-                        <input type="number" class="form-control"
-                            name="blog[walkDistance]" step="0.1">
+                    <div class="form-row">
+                        <div class="form-group col-3">
+                            <label>Walk Distance</label>
+                            <input type="number" class="form-control"
+                                name="blog[walkDistance]" step="0.1" placeholder="ex. 10.2">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Walk Steps (No commas: ex. 14233)</label>
-                        <input type="number" class="form-control"
-                            name="blog[walkSteps]">
+                    <div class="form-row ">
+                        <div class="form-group col-3">
+                            <label>Walk Steps</label>
+                            <input type="number" class="form-control"
+                                name="blog[walkSteps]" placeholder="ex. 14233">
+                        </div>
                     </div>
+                    
                     <div class="form-group">
                         <label>Walk Time</label>
                         <div class="form-row">
-                            <div class="col">
+                            <div class="col-2">
                                 <input type="number" class="form-control"
                                 name="blog[walkTimeHrs]" placeholder="Hours">
                             </div>
-                            <div class="col">
+                            <div class="col-2">
                                 <input type="number" class="form-control"
                                 name="blog[walkTimeMins]" placeholder="Minutes">
                             </div>
@@ -135,7 +143,7 @@
                         
                     </div>
                     <div class="form-group">
-                        <label>Views</label>
+                        <!-- <label>Views</label> -->
                         <input type="number" class="form-control"
                                 name="blog[views]" value="0" hidden>
                         
@@ -152,11 +160,12 @@
                     
                 </form>
             </div>
-            <div class="col-md-2"></div>
+            
         </div>
         <br>
     </div>
 
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
@@ -169,6 +178,14 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="/javascripts/new.js"></script>
+
+    <script>
+        tinymce.init({
+          selector: '#mytextarea',
+          plugins : "paste,autoresize",
+          content_style: "body { line-height: 1; }"
+        });
+      </script>
 </body>
 
 </html>
