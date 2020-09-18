@@ -23,7 +23,7 @@
 <body>
 <!-- new episode form -->
     <div class="container">
-        <div class="row justify-content-center">
+        <div id="new-post-container" class="row justify-content-center">
             <div class="col-12 d-flex justify-content-center pt-3">
                 <h2>Add Blog Post</h2>
             </div>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-2">
-                            <label>Number of Podcasts</label>
+                            <label># of Podcasts</label>
                             <input type="number" class="form-control"
                                 name="blog[podcasts]">
                         </div>
@@ -101,15 +101,15 @@
                     
                     <div class="form-group pb-4">
                         <label>Episode Blog Post Text</label>
-                        <textarea id="mytextarea" name="blog[body]" class="form-control"
-                            cols="30" rows="10"></textarea>                     
+                        <textarea id="mytextarea" name="blog[body]" class="form-control">
+                            </textarea>                     
                     </div>
 
                     <div class="form-group">
                         <label>Map Image <p>
                             <!-- (right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p></label> -->
                         <input type="file" class=""
-                            name="blog[walkImage]">
+                            name="blog[image]">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-3">

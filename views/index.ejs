@@ -64,12 +64,12 @@
                                 <div class="p-3" style="width: 100%;">
                                     <h5> <%=blogs[0].episodeNum%></h5>
                                     <% if (blogs[0].walkImage.startsWith("uploaded")) { %>
-                                        <img src="/images/<%=blogs[0].walkImage%>"
+                                        <img src="/images/<%=blogs[0].walkImage%>" class="card-img-top" alt="Map of walk">
                                     <%} else { %>
-                                        <img src="<%=blogs[0].walkImage%>"
+                                        <img src="<%=blogs[0].walkImage%>" class="card-img-top" alt="Map of walk">
                                     <% } %>
                                     
-                                        class="card-img-top" alt="Map of walk">
+                                        
                                     <div class="card-body card-text p-2">
                                         <ul>
                                             <li>Distance:

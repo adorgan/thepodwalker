@@ -68,24 +68,33 @@
                         <div class="row no-gutters">
                             <div
                                 class=" img-container col-3 d-flex align-items-center">
-                                <% if (Array.isArray(blog.image)) { %>
-                                    <img src="<%=blog.image[0]%>" class="card-img p-2 p-md-1" alt="Main episode image">
+                                
+                                
+                                    <% if (Array.isArray(blog.image)) { %>
+                                        <% if (blog.image[0].startsWith("uploaded")) { %>
+                                            <img src="/images/<%=blog.image[0]%>" class="card-img p-2 p-md-1" alt="Main episode image">
+                                        <%} else { %>
+                                            <img src="<%=blog.image[0]%>" class="card-img p-2 p-md-1" alt="Main episode image">
+                                        <% } %>
                                     <%} else { %>
-                                    <img src="<%=blog.image%>" class="card-img p-2 p-md-1" alt="Main episode image">
+                                        <img src="<%=blog.image%>">
                                     <% } %>
                             </div>
-                            <div class="col-5 ">
+                            <div class="col-7 ">
                                 <div class="card-body pb-1 py-md-1">
                                     <h5 class="card-title episode-title mb-0">
                                         <%=blog.episodeNum%></h5>
                                     <p class="card-text mb-0"><%=blog.title%>
                                     </p>
-                                    <p class=" card-text"><small
+                                    <p class=" card-text mb-0"><small
                                             class="text-muted"><%=(blog.created.getMonth()+1) + '/' + blog.created.getDate() + '/' + blog.created.getFullYear()%></small>
                                     </p>
+                                    <div>
+                                        Views: <%= blog.views %>
+                                    </div>
                                 </div>
                             </div>
-                            <div class=" col-4 pt-3">
+                            <div class=" col-2 pt-3">
                                 <form
                                     action="/admin/episodes/<%=blog._id%>/edit">
                                     <button class="btn btn-warning mb-2"

@@ -78,13 +78,16 @@ router.get("/admin/episodes/new", isLoggedIn, function (req, res) {
 router.post("/admin/episodes/new", upload.array("blog[image]"), function (req, res) {
     
     // req.body.blog.mainImg = req.body.blog.image[0];
-    console.log(req.body.blog);
-    console.log(req.files);
+    
     var imgArray = [];
-    req.files.forEach(function(file){
-        imgArray.push(file.filename);
-    })
-    console.log(imgArray);
+    // req.files.forEach(function(file){
+    //     imgArray.push(file.filename);
+    // })
+    for(var i = 0; i <req.files.length - 1; i++ ){
+        imgArray.push(req.files[i].filename);
+    }
+
+    req.body.blog.walkImage = req.files[req.files.length - 1].filename;
     req.body.blog.image = imgArray;
     Blog.create(req.body.blog, function (err, newBlog) {
         if (err) {
