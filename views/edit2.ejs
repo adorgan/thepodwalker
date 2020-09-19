@@ -6,6 +6,7 @@
     <title>The Pod Walker</title>
     <meta name="description" content="Admin Edit Page">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tiny.cloud/1/0oa0740ei9fixzv66q2hnh3j82qqein1e6rcvaifsubm5fmh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="icon" href="/images/favicon.ico" type="image/png">
     <link
         href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap"
@@ -19,125 +20,183 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
 </head>
 
+
 <body>
-<!-- admin edit episode form -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center pt-3">
-                <h2>Edit Blog Post</h2>
+    <!-- new episode form -->
+        <div class="container">
+            <div id="new-post-container" class="row justify-content-center">
+                <div class="col-12 d-flex justify-content-center pt-3">
+                    <h2>Edit Blog Post</h2>
+                </div>
+                
+                <div class="col-10">
+                    <form autocomplete=off action="/admin/episodes/<%=blog._id%>?_method=PUT"
+                        method="POST" >
+                        <div class="class form-row">
+                            <div class="form-group col-3">
+                                <label>Episode Number</label>
+                                <input type="text" class="form-control form-small"
+                                 name="blog[episodeNum]" value="<%= blog.episodeNum %>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Episode Title</label>
+                            <input type="text" class="form-control"
+                                name="blog[title]" value="<%= blog.title %>">
+                        </div>
+    
+                        <!-- <p>Hero Image</p> -->
+                        <!-- <div class="form-group">
+                            <label>Hero Image URL </label>
+                            <input type="text" class="form-control"
+                                name="blog[mainImg]">
+                        </div> -->
+                        
+                        <h4>Slideshow Photos</h4>
+                        <%for(var i = 0; i < blog.image.length; i++){%>
+                            <div class="form-group">
+                                <label>Image <%=i+1%> URL </label>
+                                <input type="text" class="form-control"
+                                    name="blog[image]" value="<%= blog.image[i] %>">
+                            </div>
+                            <img src="<%= blog.image[i] %>" alt="image" style="max-width: 100px;">
+                            <div class="form-group">
+                                <label>Image <%=i+1%> Caption </label>
+                                <input type="text" class="form-control"
+                                    name="blog[caption]" value="<%= blog.caption[i] %>">
+                            </div>
+                            
+                            <%}; %>
+    
+                        <div id="morePhotos"></div>
+                        <button id="photoBtn" class="btn btn-success mb-5">Add another photo</button>
+    
+                        <div class="form-group">
+                            <label>Playlist URL (<a target="_blank" href="https://www.listennotes.com/@thepodwalker/">ListenNotes</a>)
+                                <p>
+                                    <ul>
+                                        <li>Search for podcast episode</li>
+                                        <li>Click "save" and create new playlist at bottom</li>
+                                        <li>After adding all podcasts, click "Listen Later" on top right of page</li>
+                                        <li>Click on the playlist</li>
+                                        <li>Click "embed"</li>
+                                        <li>Make sure display order matches order of blog post</li>
+                                        <li>copy html code and paste below</li>
+                                    </ul>
+                                </p>
+                            </label>
+                            <input type="text" class="form-control"
+                                name="blog[playlist]" value="<%= blog.playlist %>"> 
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-2">
+                                <label># of Podcasts</label>
+                                <input type="number" class="form-control"
+                                    name="blog[podcasts]" value="<%= blog.podcasts %>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group pb-4">
+                            <label>Episode Blog Post Text</label>
+                            <textarea id="mytextarea" name="blog[body]" class="form-control" >
+                                <%= blog.body %></textarea>                     
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Map Image </label>>
+                                <!-- (right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p></label> -->
+                            <input type="text" class="form-control"
+                                name="blog[walkImage]" value="<%= blog.walkImage %>">
+                            <img src="<%= blog.walkImage %>" alt="walk image" style="max-width: 100px;">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-3">
+                                <label>Walk Distance</label>
+                                <input type="number" class="form-control"
+                                    name="blog[walkDistance]" step="0.1" value="<%= blog.walkDistance %>">
+                            </div>
+                        </div>
+                        <div class="form-row ">
+                            <div class="form-group col-3">
+                                <label>Walk Steps</label>
+                                <input type="number" class="form-control"
+                                    name="blog[walkSteps]" value="<%= blog.walkSteps %>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Walk Time</label>
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <input type="number" class="form-control"
+                                    name="blog[walkTimeHrs]" value="<%= blog.walkTimeHrs %>">
+                                </div>
+                                <div class="col-2">
+                                    <input type="number" class="form-control"
+                                    name="blog[walkTimeMins]" value="<%= blog.walkTimeMins %>">
+                                </div>
+                                
+                            
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <!-- <label>Views</label> -->
+                            <input type="number" class="form-control"
+                                    name="blog[views]" value="<%= blog.views %>" hidden>
+                            
+                        </div>
+                        <!-- <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="emailCheck" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Send Email Notifications
+                            </label>
+                          </div> -->
+                        <div class="d-flex justify-content-center">
+                            <input class="btn btn-primary mb-5" type="submit" value="Submit">
+                        </div>
+                        
+                    </form>
+                </div>
+                
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <form autocomplete=off action="/admin/episodes/<%=blog._id%>?_method=PUT"
-                    method="POST">
-                    <div class="form-group">
-                        <label>Episode Number (ex. Episode 21)</label>
-                        <input type="text" class="form-control"
-                            name="blog[episodeNum]" value="<%= blog.episodeNum %>">
-                    </div>
-                    <div class="form-group">
-                        <label>Title of Post (All important words capitalized)</label>
-                        <input type="text" class="form-control"
-                            name="blog[title]" value="<%= blog.title %>">
-                    </div>
-                    
-                    <p>Slideshow Photos</p>
-                    <p>(right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p>
-                    
-                    <%for(var i = 0; i < blog.image.length; i++){%>
-                    <div class="form-group">
-                        <label>Image <%=i+1%> URL </label>
-                        <input type="text" class="form-control"
-                            name="blog[image]" value="<%= blog.image[i] %>">
-                    </div>
-                    <div class="form-group">
-                        <label>Image <%=i+1%> Caption </label>
-                        <input type="text" class="form-control"
-                            name="blog[caption]" value="<%= blog.caption[i] %>">
-                    </div>
-                    
-                    <%}; %>
-                    <div id="morePhotos"></div>
-                    <button id="photoBtn" class="btn btn-success mb-5">Add another photo</button>
-
-                    
-                    <div class="form-group">
-                        <label>Playlist URL (<a target="_blank" href="https://www.listennotes.com/@thepodwalker/">ListenNotes</a>)
-                            <p>
-                                <ul>
-                                    <li>Search for podcast episode</li>
-                                    <li>Click "save" and create new playlist at bottom</li>
-                                    <li>After adding all podcasts, click "Listen Later" on top right of page</li>
-                                    <li>Click on the playlist</li>
-                                    <li>Click "embed"</li>
-                                    <li>Make sure display order matches order of blog post</li>
-                                    <li>copy html code and paste below</li>
-                                </ul>
-                            </p>
-                        </label>
-                        <input type="text" class="form-control"
-                            name="blog[playlist]" value="<%= blog.playlist %>">
-                    </div>
-                    <div class="form-group">
-                        <label>Post Body
-                            <p>
-                                <ul>
-                                    <li>Go to <a target="_blank" href="https://wordhtml.com/">HTML Formatter</a></li>
-                                    <li>Copy text from Microsoft Word doc to 'Word Editor'</li>
-                                    <li>Format spacing</li>
-                                    <li>Click HTML tab</li>
-                                    <li>Copy HTML code and paste below</li>
-                                </ul>
-                            </p>
-                        </label>
-                        <textarea name="blog[body]" class="form-control"
-                            cols="30" rows="10"><%= blog.body %></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Map Image URL <p>(right-click, open link in incognito window <a target="_blank" href="https://photos.google.com/share/AF1QipOJElfxbh8csx-WHYDoFJDVrWinNNqzoNQ92UaUcpwTYETEj4Hj87CXx7byOm3Grg?key=UEduNDJsckRMalRGM3RkVUEwLXNiN1hrSllKcW5n">PHOTOS</a>)</p></label>
-                        <input type="text" class="form-control"
-                            name="blog[walkImage]" value="<%= blog.walkImage %>">
-                    </div>
-                    <div class="form-group">
-                        <label>Walk Distance (ex. 10.2 miles)</label>
-                        <input type="text" class="form-control"
-                            name="blog[walkDistance]" value="<%= blog.walkDistance %>">
-                    </div>
-                    <div class="form-group">
-                        <label>Walk Steps (ex. 14,233)</label>
-                        <input type="text" class="form-control"
-                            name="blog[walkSteps]" value="<%= blog.walkSteps %>">
-                    </div>
-                    <div class="form-group">
-                        <label>Walk Time (ex. 4 hours 23 minutes)</label>
-                        <input type="text" class="form-control"
-                            name="blog[walkTime]" value="<%= blog.walkTime %>">
-                    </div>
-                    
-                    <div class="d-flex justify-content-center">
-                        <input class="btn btn-primary mb-5" type="submit" value="Submit">
-                    </div>
-                    
-                </form>
-            </div>
-            <div class="col-md-2"></div>
+            <br>
         </div>
-        <br>
-    </div>
+    
+        <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+        <script src="/javascripts/new.js"></script>
+    
+        
+        <script>
+            tinymce.init({
+              selector: '#mytextarea',
+              plugins : "paste,autoresize",
+              content_style: "body { line-height: 1; }"
+            });
 
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-<script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-<script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-    <script src="/javascripts/new.js"></script>
+            // tinymce.init({
+            // selector: '#myTextarea',
+            // plugins : "paste,autoresize",
+            // setup: function (editor) {
+            // editor.on('init', function (e) {
+            //     editor.setContent(body);
+//       });
+//     }
+//   });
+          </script>
     </body>
+
+
 </html>

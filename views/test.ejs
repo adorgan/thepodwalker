@@ -10,11 +10,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="The Pod Walker: <%=blog.episodeNum%>" />
     <meta property="og:description" content="<%=blog.title%>" />
-    <% if (blog.image[0].startsWith("uploaded")) { %>
-        <meta property="og:image" content="/images/<%=blog.image[0]%>" />
-    <%} else { %>
-        <meta property="og:image" content="<%=blog.image[0]%>" />
-    <% } %>
+    <meta property="og:image" content="<%=blog.image[0]%>" />
     <meta property="og:image:type" content="image/jpeg" />
 
 
@@ -97,11 +93,7 @@
     <% for(var i = 0; i < count; i++){ %>
     <div class="mySlides">
       <div class="numbertext"><%=i+1%> / <%=count%></div>
-        <% if (blog.image[i].startsWith("uploaded")) { %>
-            <img src="/images/<%=blog.image[i]%>" style="width:100%" alt="<%=blog.caption[i]%>">
-        <%} else { %>
-            <img src="<%=blog.image[i]%>" style="width:100%" alt="<%=blog.caption[i]%>">
-        <% } %>
+      <img src="<%=blog.image[i]%>" style="width:100%" alt="<%=blog.caption[i]%>">
       
     </div>
     <%}; %>
@@ -155,11 +147,7 @@
                 <h3>Today's Walk</h3>
                 <div class="mb-3 shadow-sm">
                     <div class="card p-2 " style="width: 100%;">
-                        <% if (blog.walkImage.startsWith("uploaded")) { %>
-                            <img src="/images/<%=blog.walkImage%>" class="card-img-top" alt="Main article image">
-                        <%} else { %>
-                            <img src="<%=blog.walkImage%>" class="card-img-top" alt="Main article image">
-                        <% } %>
+                        <img src="<%=blog.walkImage%>" class="card-img-top" alt="Main article image">
                         
                         <div class="card-body card-text p-2">
                             <ul>
