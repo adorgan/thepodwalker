@@ -14,7 +14,7 @@ var adminRoutes = require("./routes/admin"),
     indexRoutes = require("./routes/index"),
     errorRoutes = require("./routes/error");
 
-mongoose.connect(process.env.PASSWORD_MONGODB, {
+mongoose.connect("mongodb+srv://andrew:" + process.env.PASSWORD_MONGODB + "@cluster0-xt2mp.mongodb.net/test?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
     useNewUrlParser: true, useNewUrlParser: true
 });
