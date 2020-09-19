@@ -11,13 +11,13 @@ var multerS3 = require("multer-s3");
 var AWS = require("aws-sdk");
 
 const s3 = new AWS.S3({
-    accessKeyId: passwords.accessKey,
-    secretAccessKey: passwords.secretKey
+    accessKeyId: process.env.ACCESS_KEY,
+    secretAccessKey: process.env.SECRET_KEY
 });
 
 const storage = new multerS3({
     s3: s3,
-    bucket: passwords.butcketName,
+    bucket: 'podwalker-photos',
     acl: 'public-read',
     key: function(req,file,cb){
         // console.log(file);
