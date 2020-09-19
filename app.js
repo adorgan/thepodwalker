@@ -14,7 +14,7 @@ var adminRoutes = require("./routes/admin"),
     indexRoutes = require("./routes/index"),
     errorRoutes = require("./routes/error");
 
-mongoose.connect(process.env.PASSWORD_MONGODB, {
+mongoose.connect(passwords.passwordMongoDB, {
     useUnifiedTopology: true,
     useNewUrlParser: true, useNewUrlParser: true
 });
@@ -28,7 +28,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(session({
-    secret: process.env.PASSWORD_SESSION,
+    secret: passwords.passwordSession,
     resave: false,
     saveUninitialized: false
 }));
