@@ -6,8 +6,8 @@ var bodyParser = require("body-parser"),
     session = require("express-session"),
     mongoose = require("mongoose"),
     express = require("express"),
-    passwords = require("./private/passwords"),
     app = express();
+    require('dotenv').config()
 
 var adminRoutes = require("./routes/admin"),
     subscribeRoutes = require("./routes/subscribe"),

@@ -5,7 +5,6 @@ var Blog = require("../models/blogpost");
 var Email = require("../models/email");
 var transporter = require("./mailer");
 var Email = require("../models/email");
-var passwords = require("../private/passwords");
 var multer = require("multer");
 var multerS3 = require("multer-s3");
 var AWS = require("aws-sdk");
@@ -17,10 +16,9 @@ const s3 = new AWS.S3({
 
 const storage = new multerS3({
     s3: s3,
-    bucket: 'podwalker-photos',
+    bucket: process.env.BUCKET_NAME,
     acl: 'public-read',
     key: function(req,file,cb){
-        // console.log(file);
         cb(null, Date.now() + file.originalname);
     }
 });

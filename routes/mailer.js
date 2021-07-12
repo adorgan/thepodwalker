@@ -1,5 +1,4 @@
-var nodeMailer = require("nodemailer"),
-    passwords = require("../private/passwords");
+var nodeMailer = require("nodemailer");
 
 var transporter = nodeMailer.createTransport({
     pool: true,
