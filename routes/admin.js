@@ -104,34 +104,34 @@ router.post("/admin/episodes/new", upload.array("blog[image]"), function (req, r
             res.render("new");
         }
         else {
-            if(req.body.emailCheck == "on"){
+            // if(req.body.emailCheck == "on"){
                             
-                Email.find({}, function (err, emailArray) {
-                    emailArray.forEach(function (email) {
-                        setTimeout(function(){}, 2000);
-                        var mailOptions = {
-                            from: 'thepodwalker@gmail.com',
-                            to: email.email,
-                            subject: 'New Pod Walker Episode',
-                            html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
-                                    "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
-                                    "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
-                                    "<div>"+newBlog.episodeNum+"</div>"+ 
-                                    "<div><strong>" + newBlog.title + "</strong></div>"+
-                                    "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
-                                    "<br><br><br>"+
-                                    "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
-                        };
-                        transporter.sendMail(mailOptions, function (error, info) {
-                            if (error) {
-                                console.log(error);
-                            } else {
-                                console.log('Email sent: ' + info.response);
-                            }
-                        });
-                    });
-                });
-            }
+            //     Email.find({}, function (err, emailArray) {
+            //         emailArray.forEach(function (email) {
+            //             setTimeout(function(){}, 2000);
+            //             var mailOptions = {
+            //                 from: 'thepodwalker@gmail.com',
+            //                 to: email.email,
+            //                 subject: 'New Pod Walker Episode',
+            //                 html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
+            //                         "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
+            //                         "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
+            //                         "<div>"+newBlog.episodeNum+"</div>"+ 
+            //                         "<div><strong>" + newBlog.title + "</strong></div>"+
+            //                         "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
+            //                         "<br><br><br>"+
+            //                         "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
+            //             };
+            //             transporter.sendMail(mailOptions, function (error, info) {
+            //                 if (error) {
+            //                     console.log(error);
+            //                 } else {
+            //                     console.log('Email sent: ' + info.response);
+            //                 }
+            //             });
+            //         });
+            //     });
+            // }
             
             res.redirect("/admin/episodes");
         }
