@@ -20,7 +20,8 @@ $("#subscribe_button").on("click", function(event){
                 email: {
                     "firstName" : $("#subscribe_first_name").val(),
                     "lastName" : $("#subscribe_last_name").val(),
-                    "email" : $("#subscribe_email").val()
+                    "email" : $("#subscribe_email").val(),
+                    // "g-recaptcha": $("#g-recaptcha-response").val()
                 }
             },
         success: (function(result){

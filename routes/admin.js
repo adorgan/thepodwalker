@@ -8,6 +8,7 @@ var Email = require("../models/email");
 var multer = require("multer");
 var multerS3 = require("multer-s3");
 var AWS = require("aws-sdk");
+const sgMail = require('@sendgrid/mail')
 
 const s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY,
@@ -83,27 +84,41 @@ router.get("/admin/episodes/new", isLoggedIn, function (req, res) {
 router.post("/admin/episodes/new", upload.array("blog[image]"), function (req, res) {
 
     
-    // req.body.blog.mainImg = req.body.blog.image[0];
-    
-    var imgArray = [];
-    // req.files.forEach(function(file){
-    //     imgArray.push(file.filename);
-    // })
-    for(var i = 0; i <req.files.length - 1; i++ ){
-        imgArray.push(req.files[i].location);
-    }
 
-    req.body.blog.walkImage = req.files[req.files.length - 1].location;
-    req.body.blog.image = imgArray;
     
+    // var imgArray = [];
 
-    // uploadFile(req.files.filename);
+    // for(var i = 0; i <req.files.length - 1; i++ ){
+    //     imgArray.push(req.files[i].location);
+    // }
+
+    // req.body.blog.walkImage = req.files[req.files.length - 1].location;
+    // req.body.blog.image = imgArray;
+    
 
     Blog.create(req.body.blog, function (err, newBlog) {
         if (err) {
             res.render("new");
         }
         else {
+
+            sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+            const msg = {
+                to: 'adorgan@gmail.com', // Change to your recipient
+                from: 'The Podwalker <tim@thepodwalker.com>', // Change to your verified sender
+                subject: 'Sending with SendGrid is Fun',
+                text: 'and easy to do anywhere, even with Node.js',
+                html: "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>",
+                }
+            sgMail
+            .send(msg)
+            .then(() => {
+                console.log('Email sent')
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
             // if(req.body.emailCheck == "on"){
                             
             //     Email.find({}, function (err, emailArray) {
