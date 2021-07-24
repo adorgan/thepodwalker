@@ -8,7 +8,7 @@ var Email = require("../models/email");
 var multer = require("multer");
 var multerS3 = require("multer-s3");
 var AWS = require("aws-sdk");
-const sgMail = require('@sendgrid/mail')
+const sgMail = require('@sendgrid/mail');
 
 const s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY,

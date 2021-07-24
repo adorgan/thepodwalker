@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var Email = require("../models/email");
-var transporter = require("./mailer");
 const fetch = require("node-fetch");
+const sgMail = require("@sendgrid/mail");
 
 //display subscribe page
 router.get("/subscribe", function (req, res) {
@@ -35,10 +35,18 @@ router.post("/subscribe", function (req, res) {
                     msg: msgSuccess,
                 });
             } else {
-                var msgSuccess = "Thank you for subscribing!";
-                return res.render("partials/subscribe_success", {
-                    msg: msgSuccess,
+                Email.create(req.body.email, function (err, newEmail) {
+                    if (err) {
+                        res.render("subscribe");
+                    } else {
+                        sendEmail();
+                        var msgSuccess = "Thank you for subscribing!";
+                        return res.render("partials/subscribe_success", {
+                            msg: msgSuccess,
+                        });
+                    }
                 });
+                
             }
         } catch (error) {
             console.log(error);
@@ -48,37 +56,27 @@ router.post("/subscribe", function (req, res) {
 
   fetchRecaptcha();
 
+  const sendEmail = () => {
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+      const msg = {
+          to: req.body.email.email, // recipient
+          from: "The Podwalker <tim@thepodwalker.com>", //verified sender
+          templateId: process.env.TEMPLATE_ID_SUBSCRIBE,
+          dynamic_template_data: {
+              name: req.body.email.firstName,
+          },
+      };
+      sgMail
+          .send(msg)
+          .then(() => {
+              console.log("Email sent");
+          })
+          .catch((error) => {
+              console.error(error);
+          });
+  }
 
-    // Email.create(req.body.email, function (err, newEmail) {
-    //     if (err) {
-    //         res.render("subscribe");
-    //     }
-    //     else {
-    //         //send email confirmation
-    //         var mailOptions = {
-    //             from: 'thepodwalker@gmail.com',
-    //             to: newEmail.email,
-    //             subject: 'Thanks for signing up for the Pod Walker',
-    //             html: "<div style='color:black;'>Hey "+ newEmail.firstName +",</div>"+
-    //                   "<div style='color: black'>"+
-    //                     "That was easy! You are now signed up to receive email notifications when new Pod Walker episodes are published."+
-    //                   "</div>"+
-    //                   "<br><br><br><div>"+
-    //                   "<a style='text-decoration:none;color:blue;' href='https://thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
-    //         };
-    //         transporter.sendMail(mailOptions, function (error, info) {
-    //             if (error) {
-    //                 console.log(error);
-    //             } else {
-    //                 console.log('Email sent: ' + info.response);
-    //             }
-    //         });
-
-    //         //send back partial template
-    //         var msgSuccess = "Thank you for subscribing!";
-    //         res.render("partials/subscribe_success", { msg: msgSuccess });
-    //     }
-    // });
+    
 });
 
 //show unsubscribe page
