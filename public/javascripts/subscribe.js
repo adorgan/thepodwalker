@@ -17,21 +17,22 @@ $("#subscribe_button").on("click", function(event){
         url: "/subscribe",
         type: "POST",
         data: {
-                email: {
-                    "firstName" : $("#subscribe_first_name").val(),
-                    "lastName" : $("#subscribe_last_name").val(),
-                    "email" : $("#subscribe_email").val(),
-                    // "g-recaptcha": $("#g-recaptcha-response").val()
-                }
+            email: {
+                firstName: $("#subscribe_first_name").val(),
+                lastName: $("#subscribe_last_name").val(),
+                email: $("#subscribe_email").val(),
             },
-        success: (function(result){
+            captcha: $("#g-recaptcha-response").val(),
+        },
+        success: function (result) {
             //reset form elements
             document.getElementById("form_subscribe").reset();
+            grecaptcha.reset();
 
             //import ejs snippet
             var div = document.getElementById("subscribe_success");
             div.innerHTML = result;
-            div.style.color = "green";
-        })
+
+        },
     });
 })
