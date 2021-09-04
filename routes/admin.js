@@ -8,20 +8,20 @@ var Email = require("../models/email");
 var multer = require("multer");
 var multerS3 = require("multer-s3");
 var AWS = require("aws-sdk");
-const sgMail = require('@sendgrid/mail');
+const sgMail = require("@sendgrid/mail");
 
 const s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_KEY
+    secretAccessKey: process.env.SECRET_KEY,
 });
 
 const storage = new multerS3({
     s3: s3,
     bucket: process.env.BUCKET_NAME,
-    acl: 'public-read',
-    key: function(req,file,cb){
+    acl: "public-read",
+    key: function (req, file, cb) {
         cb(null, Date.now() + file.originalname);
-    }
+    },
 });
 var upload = multer({ storage: storage });
 
@@ -31,21 +31,21 @@ router.get("/admin/login", function (req, res) {
 });
 
 //Verify username/password is correct to login
-router.post("/admin/login", passport.authenticate("local", {
-    successRedirect: "/admin/episodes",
-    failureRedirect: "/admin/login"
-
-    }), function (req, res) {
-
-});
+router.post(
+    "/admin/login",
+    passport.authenticate("local", {
+        successRedirect: "/admin/episodes",
+        failureRedirect: "/admin/login",
+    }),
+    function (req, res) {}
+);
 
 //Show admin console with all episodes
 router.get("/admin/episodes", isLoggedIn, function (req, res) {
-
     var context = [];
 
     const blogs = new Promise((resolve, reject) => {
-        Blog.find({}, null, {sort: 'created'}, function (err, blogs) {
+        Blog.find({}, null, { sort: "created" }, function (err, blogs) {
             if (err) {
                 console.log("Error");
             } else {
@@ -57,11 +57,10 @@ router.get("/admin/episodes", isLoggedIn, function (req, res) {
     });
 
     const email = new Promise((resolve, reject) => {
-        Email.find({}, function(err, email){
-            if(err){
+        Email.find({}, function (err, email) {
+            if (err) {
                 console.log(error);
-            }
-            else{
+            } else {
                 context.email = email.length;
                 resolve();
             }
@@ -69,10 +68,8 @@ router.get("/admin/episodes", isLoggedIn, function (req, res) {
     });
 
     Promise.all([blogs, email]).then((values) => {
-        res.render('adminepisodes', context);
+        res.render("adminepisodes", context);
     });
-
-    
 });
 
 //show new blog post page
@@ -81,117 +78,103 @@ router.get("/admin/episodes/new", isLoggedIn, function (req, res) {
 });
 
 //update database with new episode, send mailer to email list
-router.post("/admin/episodes/new", upload.array("blog[image]"), function (req, res) {
+router.post(
+    "/admin/episodes/new",
+    upload.array("blog[image]"),
+    function (req, res) {
+        var imgArray = [];
 
-    
+        if (req.files.length !== 2) {
+            for (var i = 0; i < req.files.length - 1; i++) {
+                imgArray.push(req.files[i].location);
+            }
 
-    
-    // var imgArray = [];
-
-    // for(var i = 0; i <req.files.length - 1; i++ ){
-    //     imgArray.push(req.files[i].location);
-    // }
-
-    // req.body.blog.walkImage = req.files[req.files.length - 1].location;
-    // req.body.blog.image = imgArray;
-    
-
-    Blog.create(req.body.blog, function (err, newBlog) {
-        if (err) {
-            res.render("new");
+            req.body.blog.walkImage = req.files[req.files.length - 1].location;
+            req.body.blog.image = imgArray;
+        } else {
+            imgArray.push(req.files[0].location);
+            req.body.blog.walkImage = req.files[1].location;
+            req.body.blog.image = imgArray;
         }
-        else {
 
-            sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-            const msg = {
-                to: 'adorgan@gmail.com', // Change to your recipient
-                from: 'The Podwalker <tim@thepodwalker.com>', // Change to your verified sender
-                subject: 'Sending with SendGrid is Fun',
-                text: 'and easy to do anywhere, even with Node.js',
-                html: "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>",
+        Blog.create(req.body.blog, function (err, newBlog) {
+            if (err) {
+                res.render("new");
+            } else {
+                if (req.body.emailCheck == "on") {
+                    Email.find({}, "email", function (err, emailObjects) {
+                        const emailArray = emailObjects.map((obj) => obj.email);
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+                            const msg = {
+                                to: emailArray, // Change to your recipient
+                                from: "The Podwalker <tim@thepodwalker.com>", // Change to your verified sender
+                                templateId: process.env.TEMPLATE_ID_NEW_EPISODE,
+                                dynamic_template_data: {
+                                    image: newBlog.image[0],
+                                    episodeNum: newBlog.episodeNum,
+                                    episodeTitle: newBlog.title,
+                                    weblink:
+                                        "https://thepodwalker.com/episodes/" +
+                                        newBlog._id,
+                                },
+                            };
+                            sgMail
+                                .sendMultiple(msg)
+                                .then(() => {
+                                    console.log("Email sent");
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                });
+                        }
+                    });
                 }
-            sgMail
-            .send(msg)
-            .then(() => {
-                console.log('Email sent')
-            })
-            .catch((error) => {
-                console.error(error)
-            })
 
-            // if(req.body.emailCheck == "on"){
-                            
-            //     Email.find({}, function (err, emailArray) {
-            //         emailArray.forEach(function (email) {
-            //             setTimeout(function(){}, 2000);
-            //             var mailOptions = {
-            //                 from: 'thepodwalker@gmail.com',
-            //                 to: email.email,
-            //                 subject: 'New Pod Walker Episode',
-            //                 html:   "<div style='color:black;'>Hey "+email.firstName+",</div>"+
-            //                         "<div style='color: black'>Check out the newest episode of the Pod Walker below.</div><br>"+
-            //                         "<div><a href='https://thepodwalker.com/episodes/" + newBlog._id+"'style='padding: 5px; text-decoration:none;color:black;'>"+
-            //                         "<div>"+newBlog.episodeNum+"</div>"+ 
-            //                         "<div><strong>" + newBlog.title + "</strong></div>"+
-            //                         "<img style='width:350px;margin-top:0px;padding-top:0px;'src="+newBlog.image[0]+"></a></div>"+
-            //                         "<br><br><br>"+
-            //                         "<div><a style='text-decoration:none;color:blue;' href='https://www.thepodwalker.com/unsubscribe'>Unsubscribe</a></div>"
-            //             };
-            //             transporter.sendMail(mailOptions, function (error, info) {
-            //                 if (error) {
-            //                     console.log(error);
-            //                 } else {
-            //                     console.log('Email sent: ' + info.response);
-            //                 }
-            //             });
-            //         });
-            //     });
-            // }
-            
-            res.redirect("/admin/episodes");
-        }
-    });
-    // res.redirect("/admin/episodes");
-});
+                res.redirect("/admin/episodes");
+            }
+        });
+    }
+);
 
 //Show admin episode edit page
 router.get("/admin/episodes/:id/edit", isLoggedIn, function (req, res) {
     Blog.findById(req.params.id, function (err, foundBlog) {
         if (err) {
             res.redirect("/admin/episodes");
-        }
-        else {
-            if(foundBlog.image.length > 1){
+        } else {
+            if (foundBlog.image.length > 1) {
                 res.render("edit2", { blog: foundBlog });
-            }
-            else{
+            } else {
                 res.render("edit", { blog: foundBlog });
             }
-            
         }
     });
 });
 
 //Update the episode listing
 router.put("/admin/episodes/:id", isLoggedIn, function (req, res) {
-    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function (err, updatedBlog) {
-        if (err) {
-            res.redirect("/");
+    Blog.findByIdAndUpdate(
+        req.params.id,
+        req.body.blog,
+        function (err, updatedBlog) {
+            if (err) {
+                res.redirect("/");
+            } else {
+                res.redirect("/admin/episodes/");
+            }
         }
-        else {
-            res.redirect("/admin/episodes/");
-        }
-    })
+    );
 });
 
 //delete blog entry from database
 router.delete("/admin/episodes/:id", isLoggedIn, function (req, res) {
-
     Blog.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.redirect("/admin/episodes/");
-        }
-        else {
+        } else {
             res.redirect("/admin/episodes/");
         }
     });
