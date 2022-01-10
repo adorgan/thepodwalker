@@ -29,9 +29,13 @@ router.get("/", function (req, res) {
                     totalWalkHrs: { $sum: "$walkTimeHrs" }
                 }}
         ]).then(function(result){
-            
+
+            // exclude Episode 96 inflated stats
             runningTotals = result;
-          
+            runningTotals[0].totalWalkDistance -= 120;
+            runningTotals[0].totalSteps -= 241920;
+            runningTotals[0].totalWalkHrs -= 39;
+
             var blogLength = blogs.length;
             var newBLogs = blogs.slice(blogLength-6, blogLength).reverse();
 
