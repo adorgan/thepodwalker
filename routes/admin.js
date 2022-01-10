@@ -146,9 +146,9 @@ router.get("/admin/episodes/:id/edit", isLoggedIn, function (req, res) {
             res.redirect("/admin/episodes");
         } else {
             if (foundBlog.image.length > 1) {
-                res.render("edit2", { blog: foundBlog });
+                res.render("editMultiPic", { blog: foundBlog });
             } else {
-                res.render("edit", { blog: foundBlog });
+                res.render("editSinglePic", { blog: foundBlog });
             }
         }
     });
