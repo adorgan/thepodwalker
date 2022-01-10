@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Blog = require("../models/blogpost");
-var Blogpost = require("../models/blog");
+// var Blogpost = require("../models/blog");
 
 
 //show home page
@@ -110,10 +110,10 @@ router.get("/episodes/:id", function (req, res) {
                         
                         if(foundBlog.image.length > 1){
                 
-                            res.render("test", { blog: foundBlog });
+                            res.render("blogMultiPic", { blog: foundBlog });
                         }
                         else{
-                            res.render("show", { blog: foundBlog });
+                            res.render("blogSinglePic", { blog: foundBlog });
                             
                         }
                     }
@@ -127,10 +127,10 @@ router.get("/episodes/:id", function (req, res) {
                     else{
                         if(foundBlog.image.length > 1){
                 
-                            res.render("test", { blog: foundBlog });
+                            res.render("blogMultiPic", { blog: foundBlog });
                         }
                         else{
-                            res.render("show", { blog: foundBlog });
+                            res.render("blogSinglePic", { blog: foundBlog });
                             
                         }
                     }
@@ -164,7 +164,7 @@ router.get("/about", function (req, res) {
         if (err) {
             console.log("Error");
         } else {
-            res.render("show", { blog: blog });
+            res.render("blogSinglePic", { blog: blog });
         }
     });
 });
@@ -175,7 +175,7 @@ router.get("/privacy", function (req, res) {
 });
 
 router.get("/test", function (req, res) {
-    res.render("test");
+    res.render("blogMultiPic");
 });
 
 module.exports = router;
