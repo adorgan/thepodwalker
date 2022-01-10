@@ -160,11 +160,11 @@ router.get("/playlists", function (req, res) {
 
 //show about page
 router.get("/about", function (req, res) {
-    Blog.find({}, null, {sort: 'created'}, function (err, blogs) {
+    Blog.findById("5eaed673e3e9535ce240d447", function (err, blog) {
         if (err) {
             console.log("Error");
         } else {
-            res.render("about", { blogs: blogs });
+            res.render("show", { blog: blog });
         }
     });
 });
