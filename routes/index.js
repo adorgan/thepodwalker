@@ -1,7 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var Blog = require("../models/blogpost");
-// var Blogpost = require("../models/blog");
+const express = require("express");
+const router = express.Router();
+const Blog = require("../models/blogpost");
 
 
 //show home page

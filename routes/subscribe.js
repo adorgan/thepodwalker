@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var Email = require("../models/email");
+const express = require("express");
+const router = express.Router();
+const Email = require("../models/email");
 const fetch = require("node-fetch");
 const sgMail = require("@sendgrid/mail");
 

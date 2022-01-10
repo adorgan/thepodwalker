@@ -1,13 +1,11 @@
-var express = require("express");
-var router = express.Router();
-var passport = require("passport");
-var Blog = require("../models/blogpost");
-var Email = require("../models/email");
-var transporter = require("./mailer");
-var Email = require("../models/email");
-var multer = require("multer");
-var multerS3 = require("multer-s3");
-var AWS = require("aws-sdk");
+const express = require("express");
+const router = express.Router();
+const passport = require("passport");
+const Blog = require("../models/blogpost");
+const Email = require("../models/email");
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const AWS = require("aws-sdk");
 const sgMail = require("@sendgrid/mail");
 
 const s3 = new AWS.S3({
