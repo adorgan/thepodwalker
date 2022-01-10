@@ -1,3 +1,4 @@
+// schema for a unique blog post
 var mongoose = require("mongoose");
 
 var blogSchema = new mongoose.Schema({

@@ -105,9 +105,16 @@
                         <div class="card-body card-text p-2">
 
                             <ul>
-                                <li>Distance: <%=blogs[0].walkDistance%></li>
-                                <li>Steps: <%=blogs[0].walkSteps%></li>
-                                <li>Time: <%=blogs[0].walkTime%></li>
+                                <li>Distance:
+                                    <%=blogs[1].walkDistance%> miles</li>
+                                <li>Steps: <%=blogs[1].walkSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                </li>
+                                <% if (blogs[1].walkTimeMins < 10) { %>
+                                    <li>Time: <%=blogs[1].walkTimeHrs%>:0<%=blogs[1].walkTimeMins%>
+                                <% } else{ %>
+                                    <li>Time: <%=blogs[1].walkTimeHrs%>:<%=blogs[1].walkTimeMins%>
+                                <% } %>
+                                </li>
                             </ul>
 
                         </div>

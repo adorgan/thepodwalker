@@ -156,7 +156,7 @@ router.get("/playlists", function (req, res) {
 
 //show about page
 router.get("/about", function (req, res) {
-    Blogpost.find({}, function (err, blogs) {
+    Blog.find({}, null, {sort: 'created'}, function (err, blogs) {
         if (err) {
             console.log("Error");
         } else {
